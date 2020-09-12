@@ -1,0 +1,189 @@
+.product {
+    width: 1024px;
+    margin: 10px auto;
+
+    button:hover {
+        cursor: pointer;
+    }
+
+    button:active,
+    button:focus,
+    input:active,
+    input:focus {
+        outline: none;
+    }
+
+    button:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    &_area {
+        position: relative;
+        width: 1024px;
+        height: 100vh;
+        display: flex;
+
+        hr {
+            height: 1px;
+            border: none;
+            border-top: 1px solid #B3A18F;
+            margin: 30px 0;
+        }
+
+        &_img {
+            width: 500px;
+            margin: 10px;
+
+            // border: 1px solid blue;
+            img {
+                position: relative;
+                left: 200px;
+                width: 200px;
+            }
+        }
+
+        &_detail {
+            width: 500px;
+            padding: 10px;
+
+            &_title,
+            &_price {
+                font-size: 16px;
+                font-family: "Roboto Mono", monospace;
+                padding: 10px;
+                // border-bottom: 1px solid #f7efe5;
+                color: #7c644b;
+            }
+
+            &_price span::before {
+                content: 'NT.';
+            }
+
+            &_price> :first-child {
+                margin-right: 1em;
+            }
+
+            &_flavor {
+                margin: 20px 10px;
+                font-size: 14px;
+                font-family: "Roboto Mono", monospace;
+                color: #7c644b;
+            }
+
+            &_quantity {
+                width: 150px;
+                height: 30px;
+                display: flex;
+                border: 1px solid #B3A18F;
+                margin: 20px 10px;
+
+                button {
+                    border: none;
+                    height: 30px;
+                    background-color: #fff;
+                    font-size: 16px;
+                }
+
+                input {
+                    width: 100px;
+                    text-align: center;
+                    border: none;
+                    background-color: #fff;
+                }
+            }
+
+            &_addbag,
+            &_wishlist {
+                margin: 20px 10px;
+
+                button {
+                    width: 100%;
+                    height: 50px;
+                    border: 1px solid #7C644B;
+                    font-size: 14px;
+                    font-family: "Roboto Mono", monospace;
+                    color: #7c644b;
+                    text-align: center;
+                    background-color: #fff;
+                }
+            }
+
+            &_addbag {
+                button {
+                    background-color: #7C644B;
+                    color: #fff;
+                }
+
+                button:hover {
+                    opacity: 0.8;
+                }
+            }
+
+            &_navbar {
+                margin: 5px 10px;
+
+                ul {
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                li {
+                    text-align: left;
+                    padding: 5px;
+                    font-size: 14px;
+                    line-height: 21px;
+                    font-family: $font;
+                    color: #7c644b;
+                }
+
+                span {
+                    margin-bottom: 15px;
+                    display: block;
+                    text-align: left;
+                    font-size: 20px;
+                    line-height: 30px;
+                    font-weight: 500;
+                    letter-spacing: 1.5px;
+                    color: $main-color;
+                }
+            }
+
+        }
+    }
+
+    &_morelook {
+        // border: 1px solid blue;
+        width: 750px;
+        margin: 10px auto;
+
+        h1 {
+            margin-bottom: 30px;
+            font-size: 18px;
+            font-family: $font;
+            line-height: 24px;
+            font-weight: 500;
+            color: $main-color;
+        }
+        a,p{
+            display: block;
+            font-size: 16px;
+            font-family: $font;
+            line-height: 24px;
+            color: $main-color;
+            text-align: center;
+            text-decoration: none;
+        }
+        &_content {
+            display: flex;
+        }
+        &-list{
+            margin: 10px 35px;
+        }
+        &_img {
+            img {
+                width: 120px;
+            }
+        }
+    }
+}

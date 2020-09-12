@@ -1,0 +1,50 @@
+html,
+body {
+    width: 100vw;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.home {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    padding-bottom: 30px;
+
+    &_footer {
+        margin-top: 15px;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: 0px;
+    }
+}
+.gotop{
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid $main-color;
+    box-shadow: 1px 1px 2px $box-shadow;
+    background: $white;
+    font-size: 15px;
+    cursor: pointer;
+    z-index: 99;
+    opacity: 0;
+    transition: 0.3s ease-in-out;
+    svg{
+        position: absolute;
+        stroke: $main-color;
+        fill: none;
+    }
+    &.show{
+        opacity: 1;
+    }
+}

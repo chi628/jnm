@@ -1,0 +1,83 @@
+.backend {
+    position: relative;
+}
+
+.container {
+    width: 1080px;
+    margin: 0 auto;
+
+    h1 {
+        position: relative;
+        margin-top: 25px;
+        text-align: center;
+        font-family: $font;
+        font-size: 28px;
+        line-height: 52px;
+        color: $main-color;
+
+        // border-bottom: 2px solid $main-color;
+        &::after {
+            content: '';
+            position: absolute;
+            border: 1px solid $main-color;
+            width: 160px;
+            top: 50px;
+            right: 460px;
+        }
+    }
+
+    table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 10px;
+        text-align: center;
+        font-family: $font;
+        font-size: 16px;
+        line-height: 24px;
+
+        th {
+            padding: 5px 0px;
+            color: $white;
+            background-color: $main-color;;
+            border: 1px solid $main-color;
+            border-radius: 3px;
+        }
+        td {
+            // padding: 5px 0px;
+            color: $main-color;
+            border-bottom: 1px solid $main-color;
+            img{
+                width: 100px;
+            }
+        }
+    }
+}
+
+.addbtn {
+    width: 100px;
+    height: 40px;
+    float: right;
+    border: 1px solid #6d6875;
+    border-radius: 5px;
+    background-color: #6d6875;
+    color: #ededed;
+    font-size: 16px;
+}
+
+.editbtn,
+.delbtn {
+    width: 80px;
+    height: 40px;
+    color: $white;
+    text-align: center;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.editbtn {
+    background-color: $main-color;
+}
+
+.delbtn {
+    background-color: $error-red;
+}

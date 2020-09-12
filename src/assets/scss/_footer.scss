@@ -1,0 +1,191 @@
+.footer {
+  width: 100vw;
+  border-top: 1px solid $white;
+  box-shadow: 1px 1px 5px $box-shadow;
+  background-color: #F7EFE5;
+  text-align: center;
+  padding-top: 10px;
+
+  &-title {
+    font-family: $font;
+    font-size: 24px;
+    line-height: 36px;
+    color: $main-color;
+    @include phone-width{
+      font-size: 18px;
+      line-height: 27px;
+    }
+  }
+
+  &-subscription {
+    // border: 1px solid red;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+
+    .errormsg {
+      // border: 1px solid red;
+      display: block;
+      margin: 10px 0 0 45px;
+      font-family: $font;
+      font-size: 14px;
+      color: $error-red;
+      text-align: left;
+
+      @include small-pad-width {
+        margin: 10px auto;
+      }
+      @include phone-width{
+        margin: 10px 10px 0;
+      }
+    }
+
+    input {
+      width: 400px;
+      height: 40px;
+      padding: 5px 10px;
+      font-size: 10px;
+      border: 2px solid $main-color;
+
+      &:focus,
+      &:active {
+        outline: none;
+      }
+      @include phone-width{
+        width: 300px;
+      }
+    }
+
+    button {
+      width: 100px;
+      height: 55px;
+      margin: 0 5px;
+      border: none;
+      border: 2px solid $main-color;
+      background-color: $white;
+
+      &:hover:enabled {
+        color: $white;
+        background-color: $main-color;
+        cursor: pointer;
+      }
+
+      &:focus,
+      &:active {
+        outline: none;
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+        color: $white;
+        opacity: 0.7;
+        background-color: $main-color;
+        border: 1px solid $main-color;
+      }
+
+      @include small-pad-width {
+        margin: 10px 0;
+        width: 420px;
+      }
+      @include phone-width{
+        margin: 10px 0;
+        width: 320px;
+      }
+    }
+  }
+
+  &-contact {
+    width: 550px;
+    margin: 5px auto;
+    &-phone,&-address,&-mail{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    li {
+      display: flex;
+
+      span {
+        margin: 5px 0;
+        font-family: $font;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 30px;
+        color: $main-color;
+        border-bottom: 1px solid $main-color;
+      }
+
+      p {
+        margin: 10px;
+        color: $main-color;
+        font-family: $font;
+        font-size: 14px;
+        line-height: 21px;
+      }
+
+      a {
+        margin: 10px;
+        color: $main-color;
+        font-family: $font;
+        font-size: 14px;
+        line-height: 21px;
+      }
+    }
+
+    @include small-pad-width {
+      width: 400px;
+      margin: 5px auto;
+      
+      &-phone,&-address{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+      }
+      li{
+        span{
+          width: 40px;
+          font-size: 14px;
+        }
+      }
+    }
+    @include phone-width {
+      width: 330px;
+      margin: 5px auto;
+      
+      &-phone,&-address{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+      }
+      li{
+        span{
+          width: 30px;
+          font-size: 12px;
+        }
+        p{
+          font-size: 10px;
+          line-height: 12px;
+        }
+      }
+    }
+  }
+
+  &-copyright {
+    padding: 10px;
+    font-family: $font;
+    font-size: 8px;
+    line-height: 12px;
+    color: $darker-grey;
+
+    @include phone-width {
+      width: 230px;
+      margin: 5px auto;
+    }
+  }
+}

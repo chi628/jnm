@@ -1,0 +1,21 @@
+.navbar {
+  background-color: #F7EFE5;
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap; /*換行*/
+  justify-content: space-around;
+  align-items: center;
+  h1{
+      font-family: $font;
+      font-size: $logo-fz;
+      font-weight: 500;
+      color: $main-color;
+  }
+  a {
+    text-decoration: none;
+    font-family: $font;
+    color: $darker-grey;
+    font-size: 16px;
+  }
+}

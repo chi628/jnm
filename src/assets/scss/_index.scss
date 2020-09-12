@@ -1,0 +1,226 @@
+.index {
+    width: 100%;
+
+    &-banner {
+        width: 1024px;
+        margin: 5px auto;
+
+        img {
+            width: 100%;
+            box-shadow: 1px 1px 2px $box-shadow;
+        }
+    }
+
+    &-reserve {
+        position: relative;
+        width: 1024px;
+        margin: 100px auto;
+        display: flex;
+        // flex-direction: column;
+
+        &-content {
+            // display: flex;
+
+            h1 {
+                font-family: $font;
+                font-size: 28px;
+                line-height: 42px;
+                color: $main-color;
+            }
+
+            span {
+                display: block;
+                font-family: $font;
+                padding-top: 10px;
+                font-size: 20px;
+                font-weight: 500;
+                line-height: 27px;
+                color: $main-color;
+            }
+
+            p {
+                // border: 1px solid red;
+                position: relative;
+                bottom: 0;
+                padding: 10px 0;
+                // width: 450px;
+                // margin-top: 50px;
+                font-family: $font;
+                font-size: 14px;
+                line-height: 21px;
+                color: $main-color;
+            }
+
+        }
+
+        .more-btn {
+            position: absolute;
+            bottom: 0;
+            // top: 140px;
+
+            button {
+                cursor: pointer;
+                width: 170px;
+                height: 50px;
+                border: 1px solid $main-color;
+                border-radius: 2px;
+                background-color: $main-color;
+
+                font-family: $font;
+                font-size: 14px;
+                color: $white;
+                text-align: center;
+
+                &:hover {
+                    cursor: pointer;
+                    background-color: $white;
+                    color: $main-color;
+                    transition: 0.5s ease-in-out;
+                }
+
+                &:active,
+                &:focus {
+                    cursor: pointer;
+                    outline: none;
+                }
+            }
+        }
+
+        img{
+            width: 500px;
+            box-shadow: 1px 1px 2px $box-shadow;
+        }
+    }
+
+
+    &-activity {
+        position: relative;
+        width: 1024px;
+        margin: 100px auto;
+        display: flex;
+        justify-content: space-around;
+
+        &-content {
+            h1 {
+                font-family: $font;
+                font-size: 28px;
+                line-height: 42px;
+                color: $main-color;
+
+            }
+
+            span {
+                display: block;
+                font-family: $font;
+                padding-top: 10px;
+                font-size: 20px;
+                font-weight: 500;
+                line-height: 27px;
+                color: $main-color;
+            }
+
+            p {
+                position: relative;
+                bottom: 0;
+                padding: 10px 0;
+                font-family: $font;
+                font-size: 14px;
+                line-height: 21px;
+                color: $main-color;
+            }
+            .more-btn {
+                position: relative;
+                left: 210px;
+                top: 130px;
+    
+                button {
+                    cursor: pointer;
+                    width: 170px;
+                    height: 50px;
+                    border: 1px solid $main-color;
+                    border-radius: 2px;
+                    background-color: $main-color;
+    
+                    font-family: $font;
+                    font-size: 14px;
+                    color: $white;
+                    text-align: center;
+    
+                    &:hover {
+                        cursor: pointer;
+                        background-color: $white;
+                        color: $main-color;
+                        transition: 0.5s ease-in-out;
+                    }
+    
+                    &:active,
+                    &:focus {
+                        cursor: pointer;
+                        outline: none;
+                    }
+                }
+            }
+        }
+
+        img {
+            width: 500px;
+            box-shadow: 1px 1px 2px $box-shadow;
+        }
+    }
+
+
+    &-categroy {
+        margin: 10px 0;
+        position: relative;
+
+        h1 {
+            font-family: $font;
+            font-size: 28px;
+            font-weight: 500;
+            line-height: 42px;
+            color: $main-color;
+            text-align: center;
+            margin: 20px 0;
+        }
+    }
+
+    &-products {
+        width: 1024px;
+        margin: 10px auto;
+        display: flex;
+        flex-wrap: wrap;
+
+    }
+
+    &-item {
+        display: flex;
+        flex-direction: column;
+        margin: 10px auto;
+        width: 500px;
+
+        &-img {
+            width: 450px;
+            margin: 10px auto;
+            // padding: 10px;
+
+            img {
+                width: 100%;
+                border-radius: 10px;
+                box-shadow: 1px 1px 2px $box-shadow;
+            }
+        }
+
+        &-text {
+
+            h1 {
+                font-family: $font;
+                font-size: 18px;
+                font-weight: 500;
+                line-height: 27px;
+                color: $main-color;
+                text-align: center;
+                text-align: center;
+            }
+        }
+    }
+}
