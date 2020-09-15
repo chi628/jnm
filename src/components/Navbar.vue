@@ -74,13 +74,13 @@
           </button>
         </li>
         <li>
-          <router-link to="/wishlist">
-            <i class="far fa-heart"></i>
+          <router-link to="/account">
+            <i class="far fa-user"></i>
           </router-link>
         </li>
         <li>
-          <router-link to="/account">
-            <i class="far fa-user"></i>
+          <router-link to="/wishlist">
+            <i class="far fa-heart"></i>
           </router-link>
         </li>
         <li class="header-icon-cart">
