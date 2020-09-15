@@ -1,10 +1,11 @@
 <template>
   <div class="orderinfo">
+    <loading :active.sync="isLoading"></loading>
     <div class="checkinfo">
       <h1>Customer Information</h1>
       <div class="checkinfo_form">
         <validation-observer v-slot="{ invalid }">
-          <form>
+          <form @submit.prevent="createOrder">
             <ul>
               <div class="checkinfo_form_group">
                 <li>
@@ -96,11 +97,11 @@
             </ul>
             <div class="checkinfo_form_btn">
               <router-link to="/ordercheck" class="checkinfo_form_btn_back">
-                <button type="button">&laquo; prev</button>
+                <button type="button">&laquo; back to cart</button>
               </router-link>
-              <router-link to="/ordersuccess" class="checkinfo_form_btn_next">
+              <div class="checkinfo_form_btn_next">
                 <button type="submit" :disabled="invalid">Order &raquo;</button>
-              </router-link>
+              </div>
             </div>
           </form>
         </validation-observer>
@@ -109,9 +110,11 @@
   </div>
 </template>
 <script>
+
 export default {
   data() {
     return {
+      router: '',
       form: {
         name: '',
         tel: '',
@@ -121,7 +124,33 @@ export default {
       },
       ship: 'Delivery',
       invoice: 'electronic-invoice',
+      isLoading: false,
     };
+  },
+  methods: {
+    createOrder() {
+      this.isLoading = true;
+      const url = `${process.env.VUE_APP_ApiPath}/api/${process.env.VUE_APP_UUID}/ec/orders`;
+      const order = { ...this.form };
+      this.$bus.$on('checkcoupon', (coupon) => {
+        console.log('info', coupon);
+        if (this.coupon.enabled) {
+          order.coupon = this.coupon.code;
+        }
+      });
+      this.axios.post(url, order)
+        .then((res) => {
+          if (res.data.data.id) {
+            this.$router.push(`/ordersuccess/${res.data.data.id}`);
+          }
+          this.isLoading = false;
+        }).catch((err) => {
+          console.log(err);
+          this.isLoading = false;
+        });
+    },
+  },
+  created() {
   },
 };
 </script>

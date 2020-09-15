@@ -26,6 +26,11 @@ const routes = [
         component: () => import('../views/fronted/Account.vue'),
       },
       {
+        path: 'wishlist',
+        name: 'Wishlist',
+        component: () => import('../views/fronted/Wishlist.vue'),
+      },
+      {
         path: 'reserve',
         name: 'Reserve',
         component: () => import('../views/fronted/Reserve.vue'),
@@ -51,7 +56,7 @@ const routes = [
         component: () => import('../views/fronted/Orderinfo.vue'),
       },
       {
-        path: 'ordersuccess',
+        path: 'ordersuccess/:orderId',
         name: 'Ordersuccess',
         component: () => import('../views/fronted/Ordersuccess.vue'),
       },

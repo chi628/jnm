@@ -1,5 +1,6 @@
 <template>
   <header class="header" :class="{'scroll':scroll}">
+    <loading :active.sync="isLoading"></loading>
     <div class="header-logo" :class="{'scroll':scroll}">
       <router-link to="/">
         <h2>J&amp;M</h2>
@@ -10,7 +11,7 @@
       <span></span>
       <span></span>
     </div>
-    <nav class="header-menu" :class="{'scroll':scroll , 'show':ham}">
+     <nav class="header-menu" :class="{'scroll':scroll , 'show':ham}">
       <ul>
         <li @click="ham=false">
           <router-link to="/about">
@@ -18,7 +19,7 @@
             <span>品牌故事</span>
           </router-link>
         </li>
-        <li @click="ham=false">
+        <li @click="ham=false,getProducts()">
           <router-link to="/products/all">
             <span>All Items</span>
             <span>全部商品</span>
@@ -73,6 +74,11 @@
           </button>
         </li>
         <li>
+          <router-link to="/wishlist">
+            <i class="far fa-heart"></i>
+          </router-link>
+        </li>｀
+        <li>
           <router-link to="/account">
             <i class="far fa-user"></i>
           </router-link>
@@ -103,7 +109,6 @@ export default {
   components: {
     Sidecart,
   },
-  props: ['router'],
   data() {
     return {
       isLoading: false,
@@ -118,7 +123,7 @@ export default {
   methods: {
     getPos() {
       const { scrollTop } = document.body;
-      if (scrollTop >= 180) {
+      if (scrollTop >= 170) {
         this.scroll = true;
       } else {
         this.scroll = false;
@@ -128,19 +133,39 @@ export default {
       this.$bus.$emit('getproducts');
     },
     getCart() {
-      // console.log('getcart');
       this.isLoading = true;
       this.axios
         .get(
           `${process.env.VUE_APP_ApiPath}/api/${process.env.VUE_APP_UUID}/ec/shopping`,
         )
         .then((res) => {
-          this.isLoading = false;
           this.cart = res.data.data;
           this.subtotal = 0;
           this.cart.forEach((item) => {
             this.subtotal += item.product.price * item.quantity;
           });
+          setTimeout(() => {
+            this.isCartshow = false;
+          }, 1500);
+          this.isLoading = false;
+        })
+        .catch((err) => {
+          this.isLoading = false;
+          console.log(err);
+        });
+    },
+    updateCart(id, num) {
+      this.isLoading = true;
+      const url = `${process.env.VUE_APP_ApiPath}/api/${process.env.VUE_APP_UUID}/ec/shopping`;
+      const data = {
+        product: id,
+        quantity: num,
+      };
+      this.axios
+        .patch(url, data)
+        .then(() => {
+          this.getCart();
+          this.isLoading = false;
         })
         .catch((err) => {
           this.isLoading = false;
@@ -148,13 +173,12 @@ export default {
         });
     },
     removeCartItem(id) {
-      // console.log('delete', id);
       this.isLoading = true;
       const url = `${process.env.VUE_APP_ApiPath}/api/${process.env.VUE_APP_UUID}/ec/shopping/${id}`;
       this.axios
         .delete(url)
-        .then((res) => {
-          console.log(res);
+        .then(() => {
+          // console.log(res);
           this.isLoading = false;
           this.getCart();
         })
@@ -164,37 +188,15 @@ export default {
         });
     },
     removeAllCart() {
-      console.log('removeAll');
       const url = `${process.env.VUE_APP_ApiPath}/api/${process.env.VUE_APP_UUID}/ec/shopping/all/product`;
 
       this.axios
         .delete(url)
         .then(() => {
           this.isLoading = false;
-          console.log('delete');
           // this.getCart();
         })
         .catch((err) => {
-          console.log(err);
-        });
-    },
-    updateCart(id, num) {
-      this.isLoading = true;
-      console.log('update', id, num);
-      const url = `${process.env.VUE_APP_ApiPath}/api/${process.env.VUE_APP_UUID}/ec/shopping`;
-      const data = {
-        product: id,
-        quantity: num,
-      };
-      this.axios
-        .patch(url, data)
-        .then((res) => {
-          console.log(res);
-          this.getCart();
-          this.isLoading = false;
-        })
-        .catch((err) => {
-          this.isLoading = false;
           console.log(err);
         });
     },
@@ -204,16 +206,19 @@ export default {
   },
   created() {
     this.getCart();
+
+    // 接收從sidecart的關閉按鈕傳過來的
     this.$bus.$on('close', () => {
-      // 接收從sidecart的關閉按鈕傳過來的
       this.isCartshow = false;
     });
+
+    // 點擊產品加入購物車後動畫
     this.$bus.$on('addcart', () => {
       this.isCartshow = true;
       this.getCart();
-      setTimeout(() => {
-        this.isCartshow = false;
-      }, 1500);
+    });
+    this.$bus.$on('createorder', () => {
+      this.getCart();
     });
   },
 };

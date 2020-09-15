@@ -50,7 +50,7 @@
     <div class="side_cart_footer">
       <div class="subtotal">
         <label>SUBTOTAL</label>
-        <span>{{total}}</span>
+        <span>{{total | money}}</span>
       </div>
 
         <!-- <div>

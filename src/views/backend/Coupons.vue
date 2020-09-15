@@ -168,7 +168,6 @@ export default {
       showDelModal: false,
     };
   },
-  //   props: [' token'],
   methods: {
     getCoupons(num = 1) {
       this.isLoading = true;
@@ -177,8 +176,9 @@ export default {
           `${process.env.VUE_APP_ApiPath}/api/${process.env.VUE_APP_UUID}/admin/ec/coupons?page=${num}`,
         )
         .then((res) => {
-          this.isLoading = false;
           this.coupons = res.data.data;
+          this.pagination = res.data.meta.pagination;
+          this.isLoading = false;
         })
         .catch((err) => {
           this.isLoading = false;
@@ -192,9 +192,9 @@ export default {
           `${process.env.VUE_APP_ApiPath}/api/${process.env.VUE_APP_UUID}/admin/ec/coupon/${id}`,
         )
         .then((res) => {
-          this.isLoading = false;
           this.tempCoupon.deadline_at = `${this.due_date} ${this.due_time}`;
           this.tempCoupon = res.data.data;
+          this.isLoading = false;
         })
         .catch((err) => {
           this.isLoading = false;

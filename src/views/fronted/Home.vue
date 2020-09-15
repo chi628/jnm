@@ -1,6 +1,6 @@
 <template>
     <div class="home">
-        <Navbar :router="router"/>
+        <Navbar/>
         <router-view ></router-view>
         <Footer class="home_footer"/>
         <Gotop/>
@@ -16,14 +16,6 @@ export default {
     Navbar,
     Footer,
     Gotop,
-  },
-  data() {
-    return {
-      router: '',
-    };
-  },
-  created() {
-    this.router = this.$router.history.current.name;
   },
 };
 </script>

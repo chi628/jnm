@@ -1,6 +1,8 @@
 <template>
-  <div class="checkorder">
-    <h1>Shopping Cart</h1>
+  <div>
+    <loading :active.sync="isLoading"></loading>
+    <div class="checkorder">
+       <h1>Shopping Cart</h1>
     <table class="checkorder_table">
       <thead>
         <tr>
@@ -39,8 +41,8 @@
               </select>
             </div>
           </th>
-          <th>{{item.product.price}}</th>
-          <th>{{subtotal}}</th>
+          <th>{{item.product.price | money}}</th>
+          <th>{{item.product.price * item.quantity | money}}</th>
           <th>
             <button
               type="button"
@@ -54,27 +56,32 @@
       </tbody>
     </table>
     <div class="checkorder_coupon">
-      <input type="text" placeholder="Enter discount code" />
-      <button type="submit">Apply</button>
+      <input
+       type="text"
+       name="coupon"
+       v-model="coupon_code"
+       placeholder="Enter discount code" />
+      <button type="submit" @click="addCoupon">Apply</button>
     </div>
 
     <div class="checkorder_total">
       <ul>
         <li>
           <span>Subtotal</span>
-          <span>{{subtotal}}</span>
+          <span>{{subtotal | money}}</span>
         </li>
         <li>
           <span>Shipping</span>
-          <span>{{shipping}}</span>
+          <span>{{shipping | money}}</span>
         </li>
         <li>
           <span>Discount</span>
-          <span>{{discount}}</span>
+          <span v-if="discount>0">-{{discount | money}}</span>
+          <span v-else>{{discount | money}}</span>
         </li>
         <li>
           <span>Total</span>
-          <span>{{subtotal+shipping-discount}}</span>
+          <span>{{subtotal+shipping-discount | money}}</span>
         </li>
       </ul>
     </div>
@@ -86,28 +93,31 @@
         <button type="button">Order &raquo;</button>
       </router-link>
     </div>
+    </div>
   </div>
 </template>
 <script>
 export default {
   data() {
     return {
+      isLoading: false,
       cart: [],
       subtotal: 0,
       shipping: 60,
       discount: 0,
+      coupon: {},
+      coupon_code: '',
     };
   },
   methods: {
     getCart() {
-      // this.isLoading = true;
+      this.isLoading = true;
       this.axios
         .get(
           `${process.env.VUE_APP_ApiPath}/api/${process.env.VUE_APP_UUID}/ec/shopping`,
         )
         .then((res) => {
-          console.log('ordercheck', res.data.data);
-          // this.isLoading = false;
+          this.isLoading = false;
           this.cart = res.data.data;
           this.subtotal = 0;
           this.cart.forEach((item) => {
@@ -115,15 +125,13 @@ export default {
           });
         })
         .catch((err) => {
-          // this.isLoading = false;
+          this.isLoading = false;
           console.log(err);
         });
     },
 
     updateCart(id, num) {
-      console.log('orderupdate', id, num);
       this.isLoading = true;
-      console.log('update', id, num);
       const url = `${process.env.VUE_APP_ApiPath}/api/${process.env.VUE_APP_UUID}/ec/shopping`;
       const data = {
         product: id,
@@ -131,8 +139,7 @@ export default {
       };
       this.axios
         .patch(url, data)
-        .then((res) => {
-          console.log(res);
+        .then(() => {
           this.getCart();
           this.isLoading = false;
         })
@@ -142,19 +149,34 @@ export default {
         });
     },
     removeCartItem(id) {
-      // console.log('delete', id);
       this.isLoading = true;
       const url = `${process.env.VUE_APP_ApiPath}/api/${process.env.VUE_APP_UUID}/ec/shopping/${id}`;
       this.axios
         .delete(url)
-        .then((res) => {
-          console.log(res);
+        .then(() => {
           this.isLoading = false;
           this.getCart();
         })
         .catch((err) => {
           this.isLoading = false;
           console.log(err);
+        });
+    },
+    addCoupon() {
+      this.isLoading = true;
+      const url = `${process.env.VUE_APP_ApiPath}/api/${process.env.VUE_APP_UUID}/ec/coupon/search`;
+      const couponChecked = {
+        code: this.coupon_code,
+      };
+      this.axios.post(url, couponChecked)
+        .then((res) => {
+          this.coupon = res.data.data;
+          this.discount = Math.floor((this.subtotal * this.coupon.percent) / 100);
+          this.$bus.$emit('checkcoupon', this.coupon);
+          this.isLoading = false;
+        }).catch((err) => {
+          console.log(err.response.data.errors);
+          this.isLoading = false;
         });
     },
   },

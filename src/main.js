@@ -16,6 +16,11 @@ Vue.component('Loading', Loading);
 Vue.component('ValidationProvider', ValidationProvider);
 Vue.component('ValidationObserver', ValidationObserver);
 Vue.use(VueAxios, axios);
+Vue.filter('money', (money) => {
+  const parts = money.toString().split('.');
+  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  return parts.join('.');
+});
 
 Vue.config.productionTip = false;
 
