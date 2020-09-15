@@ -77,7 +77,7 @@
           <router-link to="/wishlist">
             <i class="far fa-heart"></i>
           </router-link>
-        </li>｀
+        </li>
         <li>
           <router-link to="/account">
             <i class="far fa-user"></i>
