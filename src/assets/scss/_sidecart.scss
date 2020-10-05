@@ -2,18 +2,20 @@
     border: 1px solid $main-color;
     box-shadow: 2px 2px 4px $box-shadow;
     background-color: $white;
-    z-index: 2999;
+    z-index: 1999;
     padding: 10px;
     position: fixed;
     top: 0;
+    // right: 0;
     right: -430px;
     transition: right .8s ease;
     width: 400px;
     height: 100vh;
+    box-sizing: content-box;
 
 
     @include phone-width {
-        width: 100vw;
+        width: 330px;
     }
 
     &.show {
@@ -41,6 +43,10 @@
             background-color: $white;
             font-size: 22px;
 
+            @include phone-width {
+                left: 190px;
+            }
+
             &:hover {
                 cursor: pointer;
             }
@@ -54,33 +60,18 @@
 
         &::before {
             content: "";
-            width: 390px;
+            width: 400px;
             border: 1px solid $main-color;
-            box-shadow: 1px 1px 2px $box-shadow;
+            box-shadow: 1px 1px 1px $box-shadow;
             position: absolute;
-            top: 33px;
+            top: 35px;
             left: 0;
-        }
 
-        @include phone-width {
-            .title {
-                position: relative;
-                left: 30px;
-            }
-
-            .closebtn {
-                position: relative;
-                left: 230px;
-                border: none;
-                background-color: $white;
-                font-size: 22px;
-            }
-
-            &::before {
-                width: 400px;
-                left: 25px;
+            @include phone-width {
+                width: 330px;
             }
         }
+
     }
 
     .no-product {
@@ -94,7 +85,7 @@
     }
 
     .body {
-        height: 80%;
+        height: 80vh;
         overflow-y: scroll;
         overflow-x: hidden;
     }
@@ -102,18 +93,28 @@
     &_container {
         border: 1px solid $main-color;
         box-shadow: 1px 1px 2px $box-shadow;
-        margin-top: 20px;
+        margin: 15px 0 25px;
         display: flex;
         flex-direction: column;
+        // background-color: red;
+        width: 380px;
+        box-sizing: content-box;
+
+        @include phone-width {
+            width: 320px;
+        }
 
         &_content {
-            width: 400px;
             display: flex;
 
             .img {
-                width: 150px;
+                width: 120px;
                 padding: 10px;
                 overflow: hidden;
+
+                @include phone-width {
+                   width: 120px;
+                }
 
                 img {
                     width: 100%;
@@ -122,6 +123,10 @@
 
             .content {
                 width: 250px;
+
+                @include phone-width {
+                    width: 200px;
+                 }
 
                 h1 {
                     text-align: center;
@@ -159,22 +164,36 @@
         }
 
         &_footer {
-            width: 398px;
+            width: 380px;
             border-top: 1px solid $main-color;
             display: flex;
+            box-sizing: border-box;
+
+            @include phone-width {
+                width: 320px;
+            }
 
             .quantity {
                 border-right: 1px solid $main-color;
-                margin-left: 5px;
-                width: 200px;
+                width: 190px;
+                box-sizing: border-box;
                 display: flex;
                 flex-direction: row;
 
+                @include phone-width {
+                    width: 160px;
+                }
+
                 button {
+                    width: 30px;
                     height: 40px;
                     border: none;
                     background-color: #fff;
                     font-size: 16px;
+
+                    @include phone-width {
+                        width: 20px;
+                    }
 
                     &:hover {
                         cursor: pointer;
@@ -187,8 +206,13 @@
                 }
 
                 input {
+                    width: 130px;
                     border: none;
                     text-align: center;
+
+                    @include phone-width {
+                        width: 120px;
+                    }
 
                     &:focus,
                     &:active {
@@ -198,11 +222,17 @@
             }
 
             .remove {
-                margin-left: 5px;
-                width: 180px;
+                width: 175px;
                 height: 40px;
-                border: none;
+                margin-left: 15px;
+                border-left: 1px solid $main-color;
                 background-color: #fff;
+                font-size: 14px;
+                box-sizing: border-box;
+
+                @include phone-width {
+                    width: 145px;
+                }
 
                 &:hover {
                     cursor: pointer;
@@ -215,8 +245,6 @@
                 }
             }
         }
-
-        @include phone-width {}
     }
 
     &_footer {

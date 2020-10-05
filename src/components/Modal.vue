@@ -13,19 +13,19 @@
     </div>
     <div class="modal-body">
       <div class="modal-body-img">
-        <div>
-          <label for="imgurl">輸入圖片網址</label>
+        <div v-for="i in 5" :key="i + 'img'" class="form-group">
+          <label :for="'img' + i">輸入圖片網址</label>
           <input
-           id="imgurl"
-           type="text"
-           v-model="tempProduct.imageUrl[0]"
-           placeholder="請輸入圖片連結" />
+              :id="'img' + i"
+              v-model="tempProduct.imageUrl[i - 1]"
+              type="text"
+              class="form-control"
+              placeholder="請輸入圖片連結"
+          />
         </div>
         <div>
           <label for="uploadimg">或 上傳圖片
-              <i
-              v-if="status.fileUploading"
-              class="fas fa-spinner fa-spin"></i>
+              <i v-if="status.fileUploading" class="fas fa-spinner fa-spin"></i>
           </label>
           <input
            id="uploadimg"
@@ -71,25 +71,9 @@
                v-model="tempProduct.price"
                placeholder="請輸入售價" />
             </div>
-            <div>
-              <label for="stock">庫存量</label>
-              <input
-               id="stock"
-               type="number"
-               v-model="tempproduct.options.stock"
-               placeholder="請輸入庫存量" />
-            </div>
           </div>
         </div>
         <div class="modal-body-describe">
-          <div>
-            <label for="discount">產品優惠</label>
-            <textarea
-             id="discount"
-             type="text"
-             v-model="tempproduct.options.discount"
-             placeholder="請輸入產品優惠訊息"></textarea>
-          </div>
           <div>
             <label for="description">產品描述</label>
             <textarea
@@ -106,6 +90,19 @@
              v-model="tempProduct.content"
              placeholder="請輸入注意事項"></textarea>
           </div>
+          <div>
+              <div>
+                <input
+                  id="is_enabled"
+                  v-model="tempProduct.enabled"
+                  type="checkbox"
+                >
+                <label
+                  for="is_enabled">
+                  是否啟用
+                </label>
+              </div>
+            </div>
         </div>
       </div>
     </div>
@@ -140,10 +137,6 @@ export default {
     return {
       tempproduct: {
         imageUrl: [],
-        options: {
-          stock: '',
-          discount: '',
-        },
       },
       status: {
         fileUploading: false,

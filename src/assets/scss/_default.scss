@@ -1,0 +1,18 @@
+button {
+    border: none;
+    background-color: $white;
+    color: $main-color;
+    font-family: $font;
+    font-size: 16px;
+    text-transform: uppercase;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &:focus,
+    &:active {
+        cursor: pointer;
+        outline: none;
+    }
+}

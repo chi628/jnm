@@ -94,6 +94,10 @@ const routes = [
       },
     ],
   },
+  {
+    path: '*',
+    redirect: '/',
+  },
 ];
 
 const router = new VueRouter({

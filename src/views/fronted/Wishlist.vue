@@ -46,13 +46,5 @@ export default {
       wishlist: JSON.parse(localStorage.getItem('wishList')) || [],
     };
   },
-  methods: {
-    getWishList() {
-      console.log('wish', this.wishlist);
-    },
-  },
-  created() {
-    this.getWishList();
-  },
 };
 </script>

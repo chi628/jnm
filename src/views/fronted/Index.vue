@@ -16,17 +16,21 @@
         <p>
           每種味道，在每個人心中，都會勾勒出不一樣的畫面。
           <br />回憶或許稍縱即逝，但是味道可以永恆的留存。
-          <br />如果你也有一份珍貴的回憶想保存下，那麼歡迎你來 J&amp;M 創造屬於你自己的回憶。
+          <br />如果你也有一份珍貴的回憶想保存下，
+          <br />那麼歡迎你來 J&amp;M 創造屬於你自己的回憶。
         </p>
       </div>
       <router-link to="/reserve" class="more-btn">
         <button type="button">立即預約</button>
       </router-link>
-
-      <img src="../../assets/img/reserve.jpg" alt />
+      <div class="img">
+        <img src="../../assets/img/reserve.jpg" alt />
+      </div>
     </div>
     <div class="index-activity">
-      <img src="../../assets/img/Valentine.jpg" alt />
+      <div class="img">
+        <img src="../../assets/img/Valentine.jpg" alt />
+      </div>
       <div class="index-activity-content">
         <h1>Valentine's Day |</h1>
         <span>平淡的生活也要有儀式感</span>
@@ -34,7 +38,7 @@
           歡慶情人節，快與另一半挑選出你們感情的代表味！
           <br />結帳輸入折扣碼「iloveu」，不限金額立即 88 折。
         </p>
-        <router-link to="/products" class="more-btn">
+        <router-link to="/products/all" class="more-btn">
           <button type="button">View More</button>
         </router-link>
       </div>

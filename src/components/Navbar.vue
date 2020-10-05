@@ -1,15 +1,15 @@
 <template>
   <header class="header" :class="{'scroll':scroll}">
     <loading :active.sync="isLoading"></loading>
-    <div class="header-logo" :class="{'scroll':scroll}">
-      <router-link to="/">
-        <h2>J&amp;M</h2>
-      </router-link>
-    </div>
     <div class="ham-btn" :class="{'scroll':scroll}" @click="ham=!ham">
       <span></span>
       <span></span>
       <span></span>
+    </div>
+    <div class="header-logo" :class="{'scroll':scroll}">
+      <router-link to="/">
+        <h2>J&amp;M</h2>
+      </router-link>
     </div>
      <nav class="header-menu" :class="{'scroll':scroll , 'show':ham}">
       <ul>
@@ -68,7 +68,7 @@
     <div class="header-icon" :class="{'scroll':scroll}">
       <ul>
         <li>
-          <!-- <input type="search"  placeholder="Search..." :class="{'active':isSearch}"/> -->
+          <input type="search"  placeholder="Search..." :class="{'active':isSearch}"/>
           <button type="button" @click="isSearch = !isSearch">
             <i class="fa fa-search"></i>
           </button>
@@ -77,11 +77,26 @@
           <router-link to="/account">
             <i class="far fa-user"></i>
           </router-link>
-        </li>
-        <li>
-          <router-link to="/wishlist">
-            <i class="far fa-heart"></i>
-          </router-link>
+          <ul class="header-icon-account">
+            <li>
+              <router-link to="/wishlist">
+                <i class="far fa-heart"></i>
+                <span>Wish list</span>
+              </router-link>
+            </li>
+            <li>
+              <router-link to="">
+                <i class="fas fa-history"></i>
+                <span>Order list</span>
+              </router-link>
+            </li>
+            <li>
+              <router-link to="">
+                <i class="fas fa-tags"></i>
+                <span>My coupons</span>
+              </router-link>
+            </li>
+          </ul>
         </li>
         <li class="header-icon-cart">
           <button type="button" @click="isCartshow = true">
@@ -122,10 +137,14 @@ export default {
   },
   methods: {
     getPos() {
-      const { scrollTop } = document.body;
-      if (scrollTop >= 170) {
+      let scrollTop = window.pageYOffset;
+      console.log(window.pageYOffset);
+      if (scrollTop > 165) {
+        scrollTop = 170;
         this.scroll = true;
+        // this.position = 170;
       } else {
+        scrollTop = 0;
         this.scroll = false;
       }
     },

@@ -126,8 +126,9 @@ export default {
               this.isLoading = false;
               console.log(err);
             });
+          return true;
         }
-        return true;
+        return false;
       });
       if (!this.isInCart) {
         const cart = {

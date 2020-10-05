@@ -6,6 +6,7 @@
     <i class="fas fa-chevron-up"></i>
   </div>
 </template>
+
 <script>
 export default {
   data() {
