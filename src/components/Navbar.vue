@@ -1,6 +1,6 @@
 <template>
   <header class="header" :class="{'scroll':scroll}">
-    <loading :active.sync="isLoading"></loading>
+    <loading loader="dots" :active.sync="isLoading"></loading>
     <div class="ham-btn" :class="{'scroll':scroll}" @click="ham=!ham">
       <span></span>
       <span></span>
@@ -68,8 +68,8 @@
     <div class="header-icon" :class="{'scroll':scroll}">
       <ul>
         <li>
-          <input type="search"  placeholder="Search..." :class="{'active':isSearch}"/>
-          <button type="button" @click="isSearch = !isSearch">
+          <input type="search"  placeholder="Search..."/>
+          <button type="button">
             <i class="fa fa-search"></i>
           </button>
         </li>
@@ -77,23 +77,26 @@
           <router-link to="/account">
             <i class="far fa-user"></i>
           </router-link>
-          <ul class="header-icon-account">
+          <ul>
             <li>
+              <i class="far fa-heart"></i>
               <router-link to="/wishlist">
-                <i class="far fa-heart"></i>
                 <span>Wish list</span>
+                <span>願望清單</span>
               </router-link>
             </li>
             <li>
+              <i class="fas fa-history"></i>
               <router-link to="">
-                <i class="fas fa-history"></i>
-                <span>Order list</span>
+                <span>My orders</span>
+                <span>訂單查詢</span>
               </router-link>
             </li>
             <li>
+              <i class="fas fa-tags"></i>
               <router-link to="">
-                <i class="fas fa-tags"></i>
                 <span>My coupons</span>
+                <span>優惠券</span>
               </router-link>
             </li>
           </ul>
@@ -127,24 +130,21 @@ export default {
   data() {
     return {
       isLoading: false,
-      isSearch: false,
       isCartshow: false,
       scroll: false,
       ham: false,
       subtotal: 0,
       cart: [],
+      lastPos: 0,
     };
   },
   methods: {
     getPos() {
-      let scrollTop = window.pageYOffset;
-      console.log(window.pageYOffset);
+      const scrollTop = window.pageYOffset;
+
       if (scrollTop > 165) {
-        scrollTop = 170;
         this.scroll = true;
-        // this.position = 170;
-      } else {
-        scrollTop = 0;
+      } else if (scrollTop < 10) {
         this.scroll = false;
       }
     },

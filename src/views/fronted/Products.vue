@@ -1,6 +1,9 @@
 <template>
   <div>
-    <loading :active.sync="isLoading"></loading>
+    <loading loader="dots"  :active.sync="isLoading"></loading>
+    <Breadcrumbs
+     :catergroy="category"
+     @getproducts="getProducts"/>
     <div class="products">
       <div v-for="item in showProducts" :key="item.id" class="products_list">
         <div class="products_header">
@@ -42,10 +45,12 @@
 </template>
 <script>
 import Pagination from '@/components/Pagination.vue';
+import Breadcrumbs from '@/components/Breadcrumb.vue';
 
 export default {
   components: {
     Pagination,
+    Breadcrumbs,
   },
   data() {
     return {
@@ -57,11 +62,12 @@ export default {
       addcart: false,
       isInCart: false,
       router: '',
+      category: '',
     };
   },
   methods: {
     getProducts(num = 1) {
-      const { category } = this.$route.params;
+      this.category = this.$route.params.category;
       this.isLoading = true;
       this.axios
         .get(
@@ -73,10 +79,10 @@ export default {
           this.products = res.data.data;
           this.pagination = res.data.meta.pagination;
           this.products.forEach((product) => {
-            if (category === product.category) {
+            if (this.category === product.category) {
               this.showProducts.push(product);
-              this.category = category;
-            } else if (category === 'all') {
+              this.category = product.category;
+            } else if (this.category === 'all') {
               this.showProducts = this.products;
               this.category = 'All Products';
             }

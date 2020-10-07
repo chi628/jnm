@@ -204,7 +204,7 @@
                     text-transform: uppercase;
 
                     span {
-                        transition: 0.3s cubic-bezier(1, 0.8, 0.8, 1);
+                        transition: 0.2s cubic-bezier(1, 0.8, 0.8, 1);
                         position: relative;
                         padding: 10px;
                     }
@@ -402,7 +402,6 @@
         top: 85px;
         right: 30px;
         width: 350px;
-        border: 1px solid blue;
 
         &.scroll {
             position: absolute;
@@ -410,33 +409,7 @@
             right: 25px;
             transition: .3s linear
         }
-        &-account{
-            position: absolute;
-            display: flex;
-            flex-direction: column;
-            width: 200px;
-            top: 40px;
-            left: 150px;
-            border: 1px solid $main-color;
-            background-color: $darker-merino;
-            box-shadow: 1px 1px 2px $box-shadow;
 
-            &::before {
-                //偽元素製作三角形
-                display: block;
-                content: "";
-                height: 15px;
-                width: 15px;
-                background-color: $darker-merino;
-                border-bottom: 1px solid $second-color;
-                border-right: 1px solid $second-color;
-                position: absolute;
-                top: -9px;
-                left: 90px;
-                transform: rotate(-135deg);
-            }
-            
-        }
         &-cart {
             span {
                 display: inline-block;
@@ -461,6 +434,15 @@
             li {
                 margin: 0 10px;
 
+                &:hover {
+
+                    ul {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                }
+
                 a {
                     text-decoration: none;
                     font-size: 20px;
@@ -470,7 +452,7 @@
                 button {
                     border: none;
                     background-color: $white;
-                    font-size: 20px;
+                    font-size: 18px;
                     color: $main-color;
 
                     &:hover {
@@ -485,15 +467,97 @@
 
                 input {
                     // visibility: hidden;
+                    position: absolute;
+                    left: 20px;
+                    top: -5px;
                     width: 180px;
                     height: 35px;
                     padding: 5px;
+                    margin-bottom: 5px;
                     border: 2px solid $main-color;
                     border-radius: 5px;
 
                     &:active,
                     &:focus {
                         outline: none;
+                    }
+                }
+
+                ul {
+                    position: absolute;
+                    left: 160px;
+                    top: 40px;
+                    width: 200px;
+                    display: none;
+                    flex-direction: column;
+                    border: 1px solid $main-color;
+                    background-color: $darker-merino;
+                    box-shadow: 1px 1px 2px $box-shadow;
+
+                    &::before {
+                        //偽元素製作三角形
+                        display: block;
+                        content: "";
+                        height: 15px;
+                        width: 15px;
+                        background-color: $darker-merino;
+                        border-bottom: 1px solid $second-color;
+                        border-right: 1px solid $second-color;
+                        position: absolute;
+                        top: -9px;
+                        left: 90px;
+                        transform: rotate(-135deg);
+                    }
+
+                    li {
+                        height: 50px;
+                        color: $main-color;
+
+                        i {
+                            position: relative;
+                            top: 20px;
+                            left: -20px;
+                        }
+
+                        a {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            height: 10px;
+                            padding: 10px;
+                            overflow: hidden;
+                            text-decoration: none;
+
+                            span {
+                                transition: 0.2s cubic-bezier(1, 0.8, 0.8, 1);
+                                position: relative;
+                                top: -10px;
+                                font-size: 16px;
+                                line-height: 1.6;
+                                font-weight: 400;
+                                font-family: $font;
+                                text-transform: uppercase;
+                            }
+
+                            &:hover {
+                                span:nth-child(1) {
+                                    transform: scaleY(0) translateY(-33px);
+                                }
+
+                                span:nth-child(2) {
+                                    transform: translateY(-30px);
+                                }
+                            }
+                        }
+                    }
+
+                    li+li::before {
+                        content: "";
+                        position: absolute;
+                        border-bottom: 1px solid $main-color;
+                        box-shadow: 1px 1px 2px $box-shadow;
+                        width: 170px;
+                        left: 10px;
                     }
                 }
             }
@@ -570,16 +634,6 @@
         }
     }
 }
-
-.active {
-    visibility: visible;
-}
-
-.fa-user {
-    position: relative;
-    top: -1px;
-}
-
 .mask {
     display: none;
     ;

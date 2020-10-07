@@ -1,6 +1,6 @@
 <template>
   <div class="product">
-    <loading :active.sync="isLoading"></loading>
+    <loading loader="dots" :active.sync="isLoading"></loading>
     <div class="product_area">
       <div class="product_area_img">
         <img
