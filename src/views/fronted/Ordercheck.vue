@@ -15,7 +15,7 @@
       </thead>
       <tbody>
         <tr v-for="item in cart" :key="item.id">
-          <th class="order">
+          <td class="order">
             <div class="order">
               <div class="order-img">
                 <img :src="item.product.imageUrl[0]" alt />
@@ -24,8 +24,9 @@
                 <router-link to="/">{{item.product.title}}</router-link>
               </div>
             </div>
-          </th>
-          <th>
+          </td>
+          <td>
+            <span>數量</span>
             <div class="checkorder_table_quantity">
               <select v-model="item.quantity" @change="updateCart(item.product.id,item.quantity)">
                 <option value="1">1</option>
@@ -40,10 +41,17 @@
                 <option value="10">10</option>
               </select>
             </div>
-          </th>
-          <th>{{item.product.price | money}}</th>
-          <th>{{item.product.price * item.quantity | money}}</th>
-          <th>
+          </td>
+          <td>
+            <span>單價</span>
+            {{item.product.price | money}}
+          </td>
+          <td>
+            <span>小計</span>
+            {{item.product.price * item.quantity | money}}
+          </td>
+          <td>
+            <span>刪除</span>
             <button
               type="button"
               class="checkorder_table_remove"
@@ -51,7 +59,7 @@
             >
               <i class="far fa-trash-alt"></i>
             </button>
-          </th>
+          </td>
         </tr>
       </tbody>
     </table>

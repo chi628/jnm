@@ -1,0 +1,32 @@
+.history{
+    width: 800px;
+    margin: 10px auto;
+    border: 2px solid $main-color;
+    border-radius: 5px;
+    @include phone-width{
+        width: 350px;
+    }
+
+
+    &-sum{
+        padding: 10px;
+        border-bottom: 1px solid $merino;
+        position: relative;
+        p{
+            font-family: $font;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 1.5;
+            color: $main-color;
+        }
+        a{
+            position: absolute;
+            right: 50px;
+            top: 30px;
+            font-size: 12px;
+            line-height: 1.5;
+            color: $main-color;
+            text-decoration: none;
+        }
+    }
+}

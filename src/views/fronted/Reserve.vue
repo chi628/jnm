@@ -11,7 +11,8 @@
           預約成功後，我們將會寄發確認簡訊。若沒收到簡訊，請立即與我們聯繫。
         </li>
         <li>
-          因應新冠病毒，來店時我們將量測體溫。若體溫高於 37.5 度，我們保有取消體驗的權利。
+          因應新冠病毒，來店時我們將量測體溫。若體溫高於 37.5
+          度，我們保有取消體驗的權利。
         </li>
       </ul>
     </div>
@@ -27,7 +28,7 @@
                 type="text"
                 name="姓名"
                 id="name"
-                v-model="name"
+                v-model="form.name"
                 placeholder="your name"
                 required
               />
@@ -42,7 +43,7 @@
                 name="聯絡電話"
                 id="phone"
                 placeholder="your phone number"
-                v-model="phone"
+                v-model="form.phone"
                 required
               />
               <span class="errormsg">{{ errors[0] }}</span>
@@ -57,7 +58,7 @@
                 type="email"
                 placeholder="E-mail address"
                 required
-                v-model="email"
+                v-model="form.email"
               />
               <span class="errormsg">{{ errors[0] }}</span>
             </ValidationProvider>
@@ -65,21 +66,33 @@
           <div class="reserve-form-group">
             <ValidationProvider rules="required" v-slot="{ errors }">
               <label for="date">日期 Date</label>
-              <input type="date" name="日期" id="date" v-model="date" required />
+              <input
+                type="date"
+                name="日期"
+                id="date"
+                v-model="form.date"
+                required
+              />
               <span class="errormsg">{{ errors[0] }}</span>
             </ValidationProvider>
           </div>
           <div class="reserve-form-group">
             <ValidationProvider rules="required" v-slot="{ errors }">
               <label for="time">時間 Time</label>
-              <input type="time" name="時間" id="time" v-model="time" required />
+              <input
+                type="time"
+                name="時間"
+                id="time"
+                v-model="form.time"
+                required
+              />
               <span class="errormsg">{{ errors[0] }}</span>
             </ValidationProvider>
           </div>
           <div class="reserve-form-group">
             <ValidationProvider rules="required" v-slot="{ errors }">
               <label for="member">人數 Member</label>
-              <select name="人數" v-model="member">
+              <select name="人數" v-model="form.member">
                 <option value selected disabled>請選擇</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -101,28 +114,75 @@
         </form>
       </ValidationObserver>
     </div>
+    <div class="reserve-modal" :class="{'show':message}">
+      <div class="reserve-modal-header">
+        <div class="success">
+            <span></span>
+            <span></span>
+          <svg height="40" width="40">
+            <circle cx="20" cy="20" r="18" />
+          </svg>
+        </div>
+        <h1>恭喜預約成功</h1>
+      </div>
+      <div class="reserve-modal-body">
+        <span>以下為您的預約資訊，若有錯誤或是要更改資料，<br/>請致電 <a href="javascript:;">03-1234-4321</a>與客服聯繫。</span>
+        <h5>預約人資訊</h5>
+        <p>預約人姓名：{{checked.name}}</p>
+        <p>預約人聯絡電話：{{checked.phone}}</p>
+        <p>預約日期：{{checked.date}}</p>
+        <p>預約時間：{{checked.time}}</p>
+        <p>預約人數：{{checked.member}}</p>
+      </div>
+      <div class="reserve-modal-footer">
+        <button type="button" class="reserve-modal-footer-sure" @click="closeModal">確認</button>
+      </div>
+    </div>
   </div>
 </template>
 <script>
-
 export default {
   data() {
     return {
       isLoading: false,
-      email: '',
-      name: '',
-      phone: '',
-      date: '',
-      time: '',
-      member: '',
+      message: false,
+      form: {
+        email: '',
+        name: '',
+        phone: '',
+        date: '',
+        time: '',
+        member: '',
+      },
+      checked: {
+        email: '',
+        name: '',
+        phone: '',
+        date: '',
+        time: '',
+        member: '',
+      },
     };
   },
   methods: {
     reserve() {
       this.isLoading = true;
+      this.checked = { ...this.form };
       setTimeout(() => {
+        this.message = true;
+        this.form = {
+          email: '',
+          name: '',
+          phone: '',
+          date: '',
+          time: '',
+          member: '',
+        };
         this.isLoading = false;
       }, 1500);
+    },
+    closeModal() {
+      this.message = false;
     },
   },
 };

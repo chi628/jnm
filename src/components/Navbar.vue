@@ -1,17 +1,25 @@
 <template>
   <header class="header" :class="{'scroll':scroll}">
     <loading loader="dots" :active.sync="isLoading"></loading>
-    <div class="ham-btn" :class="{'scroll':scroll}" @click="ham=!ham">
+    <div
+      class="ham-btn" :class="{'scroll':scroll,'close':ham}"
+      @click="ham=!ham,ham_category=false">
       <span></span>
       <span></span>
       <span></span>
     </div>
-    <div class="header-logo" :class="{'scroll':scroll}">
+    <div class="header-logo" @click="ham=false" :class="{'scroll':scroll}">
       <router-link to="/">
         <h2>J&amp;M</h2>
       </router-link>
     </div>
-     <nav class="header-menu" :class="{'scroll':scroll , 'show':ham}">
+    <div class="header-mobile_serach">
+      <form action="">
+        <label for="mobile-search">搜尋</label>
+         <input id="mobile-search" type="search"  placeholder="Search..."/>
+      </form>
+    </div>
+     <nav class="header-menu" :class="{'scroll':scroll}">
       <ul>
         <li @click="ham=false">
           <router-link to="/about">
@@ -65,9 +73,63 @@
         </li>
       </ul>
     </nav>
+    <nav class="header-menu-mobile" :class="{'show':ham}">
+      <ul>
+        <li @click="ham=false">
+          <router-link to="/about">
+            <span>About J&amp;M</span>
+            <span>品牌故事</span>
+          </router-link>
+        </li>
+        <li @click="ham=false,getProducts()">
+          <router-link to="/products/all">
+            <span>All Items</span>
+            <span>全部商品</span>
+          </router-link>
+        </li>
+        <li @click="ham_category=!ham_category" class="category">
+          <a href="javascript:;">
+            <span>Category</span>
+            <span>分類商品</span>
+          </a>
+          <ul :class="{'show':ham_category}">
+            <li @click="getProducts(),ham=false">
+              <router-link to="/products/candle">
+                <span>Scented candle</span>
+                <span>香氛蠟燭</span>
+              </router-link>
+            </li>
+            <li @click="getProducts(),ham=false">
+              <router-link to="/products/jar">
+                <span>Fragrance cream</span>
+                <span>居家香氛膏</span>
+              </router-link>
+            </li>
+            <li @click="getProducts(),ham=false">
+              <router-link to="/products/sprayer">
+                <span>Aroma spray</span>
+                <span>芳香噴霧</span>
+              </router-link>
+            </li>
+            <li @click="getProducts(),ham=false">
+              <router-link to="/products/oil">
+                <span>Essential oil</span>
+                <span>天然精油</span>
+              </router-link>
+            </li>
+          </ul>
+        </li>
+        <li @click="ham=false">
+          <router-link to="/reserve">
+            <span>reservation</span>
+            <span>預約手作</span>
+          </router-link>
+        </li>
+      </ul>
+    </nav>
     <div class="header-icon" :class="{'scroll':scroll}">
       <ul>
-        <li>
+        <li class="search">
           <input type="search"  placeholder="Search..."/>
           <button type="button">
             <i class="fa fa-search"></i>
@@ -79,22 +141,22 @@
           </router-link>
           <ul>
             <li>
-              <i class="far fa-heart"></i>
               <router-link to="/wishlist">
+                <i class="far fa-heart"></i>
                 <span>Wish list</span>
                 <span>願望清單</span>
               </router-link>
             </li>
             <li>
-              <i class="fas fa-history"></i>
-              <router-link to="">
+              <router-link to="/orderhistory">
+                <i class="fas fa-clipboard-list"></i>
                 <span>My orders</span>
                 <span>訂單查詢</span>
               </router-link>
             </li>
             <li>
-              <i class="fas fa-tags"></i>
-              <router-link to="">
+              <router-link to="/coupons">
+                <i class="fas fa-tags"></i>
                 <span>My coupons</span>
                 <span>優惠券</span>
               </router-link>
@@ -117,7 +179,8 @@
       @removeall="removeAllCart"
       @updatecart="updateCart"
     />
-    <div class="mask" :class="{ 'open': isCartshow}" @click="isCartshow = !isCartshow"></div>
+    <div class="mask"
+     :class="{ 'open': isCartshow,'show':ham}" @click="isCartshow = false, ham = false"></div>
   </header>
 </template>
 <script>
@@ -133,6 +196,7 @@ export default {
       isCartshow: false,
       scroll: false,
       ham: false,
+      ham_category: false,
       subtotal: 0,
       cart: [],
       lastPos: 0,
@@ -183,6 +247,7 @@ export default {
       this.axios
         .patch(url, data)
         .then(() => {
+          // console.log(res);
           this.getCart();
           this.isLoading = false;
         })

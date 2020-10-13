@@ -84,7 +84,6 @@ export default {
               this.category = product.category;
             } else if (this.category === 'all') {
               this.showProducts = this.products;
-              this.category = 'All Products';
             }
           });
           if (this.showProducts.length < 16) {

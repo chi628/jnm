@@ -3,7 +3,7 @@
     <loading :active.sync="isLoading"></loading>
     <div class="account-discount">
       <div class="card">
-        <img src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/1qsqDfAYkYi3seNiQKMaVWAM7t4ouVJ4aeqcVlfUWraiQBpLLHWEOMXfGiRamZ6ial2DffGZ3D7Zkdf2OOUHVNh3RNwpsKbMWQw1zlseX9XmH0auPYiBaOUX75bHQTeK.png" alt />
+        <img src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/1mNveaL2vpzVSWwWV48SGhegCTxLBf03miSkcWAuqrQx2kMv64vnn2kovbMPPSedcL8w98z3HhxM5qQVMdMqZdaWsEOwz0M3WHSqpvaQmYHd7gwCATtw4HRR8hNkS7Jq.png" alt />
       </div>
       <div class="text">
         <ul>

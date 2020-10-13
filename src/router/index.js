@@ -31,6 +31,11 @@ const routes = [
         component: () => import('../views/fronted/Wishlist.vue'),
       },
       {
+        path: 'coupons',
+        name: 'Coupons',
+        component: () => import('../views/fronted/Coupons.vue'),
+      },
+      {
         path: 'reserve',
         name: 'Reserve',
         component: () => import('../views/fronted/Reserve.vue'),
@@ -44,6 +49,11 @@ const routes = [
         path: 'product/:id',
         name: 'Product',
         component: () => import('../views/fronted/Product.vue'),
+      },
+      {
+        path: 'orderhistory',
+        name: 'Orderhistory',
+        component: () => import('../views/fronted/Orderhistory.vue'),
       },
       {
         path: 'ordercheck',
@@ -101,6 +111,10 @@ const routes = [
 ];
 
 const router = new VueRouter({
+  linkExactActiveClass: 'active',
+  scrollBehavior() {
+    return { x: 0, y: 0 };
+  },
   routes,
 });
 

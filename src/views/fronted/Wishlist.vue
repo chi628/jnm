@@ -2,6 +2,7 @@
   <div>
     <loading :active.sync="isLoading"></loading>
     <div class="products">
+      <!-- <h1>Wish List</h1> -->
       <div v-for="item in wishlist" :key="item.id" class="products_list">
         <div class="products_header">
           <router-link :to="`/product/${item.id}`">

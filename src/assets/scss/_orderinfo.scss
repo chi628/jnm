@@ -1,0 +1,115 @@
+.checkinfo {
+    width: 750px;
+    margin: 0 auto;
+
+    @include phone-width {
+        width: 375px;
+    }
+
+    h1 {
+        width: 600px;
+        margin: 0 auto;
+        font-size: 16px;
+        line-height: 1.5;
+        font-family: $font;
+        font-weight: bold;
+        padding: 10px;
+        border-bottom: 1px solid $merino;
+        color: $main-color;
+
+        @include phone-width {
+            width: 350px;
+        }
+    }
+
+    button:hover {
+        cursor: pointer;
+    }
+
+    button:active,
+    button:focus,
+    select:active,
+    select:focus {
+        outline: none;
+    }
+
+    button:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+
+    &_form {
+        // border: 1px solid red;
+        text-align: center;
+        margin: 15px 0;
+        color: #7c644b;
+
+        label {
+            vertical-align: middle;
+            display: inline-block;
+            text-align: left;
+        }
+
+        &_group {
+            margin: 15px 0;
+        }
+
+        &_title {
+            width: 100px;
+            font-weight: bold;
+        }
+
+        &_ans {
+            width: 200px;
+            height: 25px;
+            border: 1px solid #957d61;
+            border-radius: 3px;
+            margin: 0 5px;
+            color: #7c644b;
+        }
+
+        &_btn {
+            width: 700px;
+            margin: 25px auto;
+            display: flex;
+            flex-direction: row;
+            position: relative;
+
+            @include phone-width {
+                width: 350px;
+            }
+
+            &_back {
+                button {
+                    border: none;
+                    width: 150px;
+                    height: 40px;
+                    background-color: $white;
+                    color: $main-color;
+                    font-family: $font;
+                    font-size: 12px;
+                    text-transform: uppercase;
+                    text-align: left;
+                }
+            }
+
+            &_next {
+                position: absolute;
+                right: 0;
+
+                button {
+                    border: 1px solid #7c644b;
+                    background-color: #7c644b;
+                    border-radius: 3px;
+                    color: white;
+                    width: 150px;
+                    height: 40px;
+                    font-family: "Roboto Mono", monospace;
+                    font-size: 14px;
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
+}

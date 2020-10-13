@@ -21,27 +21,32 @@
         </div>
         <div class="product_area_detail_quantity">
           <div>
-            <button type="button" :disabled="product.quantity === 1">-</button>
+            <button
+             type="button"
+             :disabled="product.quantity === 1"
+             @click="quantity = quantity-1">-</button>
           </div>
-          <input type="text" :value="product.quantity=1" />
+          <input type="text" :value="quantity" />
           <div>
-            <button type="button">+</button>
+            <button type="button"  @click="quantity = quantity+1">+</button>
           </div>
         </div>
         <div class="product_area_detail_addbag">
-          <button type="button" @click="addToCart(product)">Add to Cart</button>
+          <button type="button" @click="addToCart(product,quantity)">Add to Cart</button>
         </div>
-        <div class="product_area_detail_wishlist">
-          <button type="button" @click="addToWish(product)">
-            <i class="far fa-heart"></i>
-            Add to Wish List
-          </button>
-        </div>
-         <div class="product_area_detail_remove" :class="{'show':isWishList}">
-          <button type="button" @click="removeWish(product)">
-           <i class="fas fa-heart"></i>
-            Remove Wish List
-          </button>
+        <div class="wishlist">
+          <div class="product_area_detail_wishlist" :class="{'hide':isWishList}">
+            <button type="button" @click="addToWish(product)">
+              <i class="far fa-heart"></i>
+              Add to Wish List
+            </button>
+          </div>
+          <div class="product_area_detail_remove" :class="{'show':isWishList}">
+            <button type="button" @click="removeWish(product)">
+              <i class="fas fa-heart"></i>
+              Remove Wish List
+            </button>
+          </div>
         </div>
         <hr />
         <div class="product_area_detail_navbar">
@@ -92,6 +97,7 @@ export default {
       product: {
         imageUrl: [],
       },
+      quantity: 1,
       relatedProducts: [],
       selectedProducts: [],
       isWishList: false,
@@ -204,8 +210,9 @@ export default {
               this.isLoading = false;
               console.log(err);
             });
+          return true;
         }
-        return true;
+        return false;
       });
       if (!isInCart) {
         const cart = {

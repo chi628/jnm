@@ -2,7 +2,7 @@
   <div class="index">
     <div class="index-banner">
       <img
-        src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/ezohGr3PETB8ZqA2Vp3xxejzcFvue4uTXgISruIjxsC9xyIkNOXw0J3hSYGpCMLTIyPyTBNIRLpt5ELah8VMvdt35JPpvp6n0PVUH9qNK1rRAWwXCJmnHl7oU2agAEFs.jpg"
+        src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/Y9gkvcUyOaVwqpxarWLAYKsgTjp5K8t0VcQRxjlmvinYum5cJgpESLROwpeAopUfOKYN21lwbSC3gtmSgwtRamL8QtustM35kwVoJOFwqJ2bsutEmVA8Tdhu5c3ImjnV.jpg"
         alt
       />
     </div>
@@ -51,7 +51,7 @@
         <router-link to="/products/oil">
           <div class="index-item-img">
             <img
-              src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/fPo3sVsMvRa9B7kc7NkAWjtRyXMX6X5aHZo22ajbYqBU1Vtu8QNhBpQgWEnnka3mCuBLsEVONQo7uWpP8uXMNTX4DH5tN97AWuZhaAfCQR4zjagwqFz1lMh4or39WxE4.jpg"
+              src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/Pxai7ZO9C3388VSBAlghs7cJUyYasptEBHi1xhimGhgRAuakNKie0NlxrcLzI8CeUCqTrgyBGocMeSuZa5SD58g5yTsDrrOgCtM2g4WHhffMzTIKttNRnGzjah1BtC0d.jpg"
               alt
             />
           </div>
@@ -63,7 +63,7 @@
       <div class="index-item">
         <router-link to="/products/sprayer">
           <div class="index-item-img">
-            <img src="../../assets/img/6.jpg" alt />
+            <img src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/bU84w9CFD3myUd2tKgLNMBtKpiIQBajVxMyxixuQy1wR24VmsdZk3LD57ckQBCgcYR4MlitSHUeGYBnsmkBJSqHMYNJZWtRtHHo5on2gyWlhNko6BhnrKz9NiwnEIo8q.jpg" alt />
           </div>
           <div class="index-item-text">
             <h1>香氛噴霧 | 迎接嶄新的每一天</h1>
@@ -73,7 +73,7 @@
       <div class="index-item">
         <router-link to="/products/candle">
           <div class="index-item-img">
-            <img src="../../assets/img/3.jpg" alt />
+            <img src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/nncGKS5HjUosKXSK0whEAjf3EeAmI95N7p7m48f3jG4Tocgkq3hxDF32DI2qYWpIjRDi5wvlLkyMCvujROjCrHrEljH5L36evgE1d6pahAfXnBpdmbFoQM18mtjKksNu.jpg" alt />
           </div>
           <div class="index-item-text">
             <h1>大豆蠟燭 | 清新香味療癒自我</h1>
@@ -84,7 +84,7 @@
         <router-link to="/products/jar">
           <div class="index-item-img">
             <img
-              src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/EdKxtrC7L1okTm0IF30U97ACwY2iS7MlbnLPiPTXlEqQZ5MCjBLwYDbyNeI3VfLrPZMaYO4yZsIBghmdmnYEj28R9fGNPxdlafmQVzwIcNSQjGNCZxU8PY4sz2ZlZzAu.jpg"
+              src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/tgr5aisSAd7nsxThEn0728koKeQiN9i37yNTM8QvuYrgs9CqaWnWLZfDtRFw0jBCZn4DHvE2v05Gkmsw4tSLHPRMLJvfKdHx1Lf2syh7xatfmZlYae9oaVhtjjAaOSEB.jpg"
               alt
             />
           </div>

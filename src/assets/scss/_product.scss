@@ -155,16 +155,25 @@
                     opacity: 0.8;
                 }
             }
+            .wishlist{
+                position: relative;
+            }
             &_wishlist,
             &_remove {
                 button:hover {
                     opacity: 0.8;
                 }
             }
+            &_wishlist{
+                &.hide{
+                    opacity: 0;
+                }
+            }
             &_remove{
                 display: none;
-                position: relative;
-                top: -70px;
+                position: absolute;
+                top: -20px;
+                width: 96%;
                 font-size: 19px;
                 &.show{
                     display: block;
@@ -210,6 +219,9 @@
         
         @include phone-width{
             width: 350px;
+            display: flex;
+            flex-wrap: wrap;
+            
         }
 
         h1 {

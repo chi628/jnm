@@ -1,3 +1,3 @@
 module.exports = {
-  publicPath: '/jnm/dist/'
+  publicPath: './'
 }

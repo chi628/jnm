@@ -300,6 +300,14 @@
                     outline: none;
                 }
             }
+
+            @include phone-width {
+                button{
+                    width: 330px;
+                    height: 45px;
+                    margin: 0 10px;
+                }
+            }
         }
     }
 }
