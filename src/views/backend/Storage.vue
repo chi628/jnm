@@ -80,7 +80,6 @@ export default {
       },
     };
   },
-  props: [' token'],
   created() {
     this.getFile();
   },

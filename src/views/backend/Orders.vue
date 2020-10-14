@@ -58,7 +58,7 @@ export default {
       orders: {},
       tempOrder: {},
       isLoading: false,
-      Pagination: {},
+      pagination: {},
     };
   },
   methods: {

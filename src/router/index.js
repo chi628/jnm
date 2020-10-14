@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '../views/fronted/Home.vue';
+import Home from '@/views/fronted/Home.vue';
 
 Vue.use(VueRouter);
 
@@ -13,62 +13,62 @@ const routes = [
       {
         path: '',
         name: 'Index',
-        component: () => import('../views/fronted/Index.vue'),
+        component: () => import('@/views/fronted/layout/Index.vue'),
       },
       {
         path: 'about',
         name: 'About',
-        component: () => import('../views/fronted/About.vue'),
+        component: () => import('@/views/fronted/layout/About.vue'),
       },
       {
         path: 'account',
         name: 'Account',
-        component: () => import('../views/fronted/Account.vue'),
+        component: () => import('@/views/fronted/layout/Account.vue'),
       },
       {
         path: 'wishlist',
         name: 'Wishlist',
-        component: () => import('../views/fronted/Wishlist.vue'),
+        component: () => import('@/views/fronted/page/Wishlist.vue'),
       },
       {
         path: 'coupons',
         name: 'Coupons',
-        component: () => import('../views/fronted/Coupons.vue'),
+        component: () => import('@/views/fronted/page/Coupons.vue'),
       },
       {
         path: 'reserve',
         name: 'Reserve',
-        component: () => import('../views/fronted/Reserve.vue'),
+        component: () => import('@/views/fronted/layout/Reserve.vue'),
       },
       {
         path: 'products/:category',
         name: 'Products',
-        component: () => import('../views/fronted/Products.vue'),
+        component: () => import('@/views/fronted/layout/Products.vue'),
       },
       {
         path: 'product/:id',
         name: 'Product',
-        component: () => import('../views/fronted/Product.vue'),
+        component: () => import('@/views/fronted/layout/Product.vue'),
       },
       {
         path: 'orderhistory',
         name: 'Orderhistory',
-        component: () => import('../views/fronted/Orderhistory.vue'),
+        component: () => import('@/views/fronted/page/Orderhistory.vue'),
       },
       {
         path: 'ordercheck',
         name: 'Ordercheck',
-        component: () => import('../views/fronted/Ordercheck.vue'),
+        component: () => import('@/views/fronted/page/Ordercheck.vue'),
       },
       {
         path: 'orderinfo',
         name: 'Orderinfo',
-        component: () => import('../views/fronted/Orderinfo.vue'),
+        component: () => import('@/views/fronted/page/Orderinfo.vue'),
       },
       {
         path: 'ordersuccess/:orderId',
         name: 'Ordersuccess',
-        component: () => import('../views/fronted/Ordersuccess.vue'),
+        component: () => import('@/views/fronted/page/Ordersuccess.vue'),
       },
       {
         path: 'login',

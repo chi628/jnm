@@ -1,11 +1,11 @@
 <template>
     <div>
         <Navbar/>
-        <router-view v-if="checkedSuccess" :token="token"/>
+        <router-view v-if="checkedSuccess"/>
     </div>
 </template>
 <script>
-import Navbar from '../../components/Backend_nav.vue';
+import Navbar from '@/components/backend/Backend_nav.vue';
 
 export default {
   components: {

@@ -1,6 +1,6 @@
 <template>
   <div class="backend">
-    <loading :active.sync="isLoading"></loading>
+    <loading loader="dots" :active.sync="isLoading"></loading>
     <div class="container">
       <h1>Coupons</h1>
       <button class="addbtn" type="button" @click="openModal('new')">新增優惠券</button>
@@ -20,7 +20,7 @@
             <td>{{ item.title }}</td>
             <td>{{ item.code }}</td>
             <td>{{ item.percent }}</td>
-            <td>{{ item.created.datetime }}</td>
+            <td>{{ item.deadline.datetime }}</td>
             <td>
               <label class="container">
               <input
@@ -203,6 +203,7 @@ export default {
     },
     addCoupon() {
       this.isLoading = true;
+      this.tempCoupon.deadline_at = `${this.due_date} ${this.due_time}`;
       this.axios
         .post(
           `${process.env.VUE_APP_ApiPath}/api/${process.env.VUE_APP_UUID}/admin/ec/coupon`,
@@ -210,7 +211,6 @@ export default {
         )
         .then((res) => {
           this.isLoading = false;
-          this.tempCoupon.deadline_at = `${this.due_date} ${this.due_time}`;
           this.tempCoupon = res.data.data;
           this.getCoupons();
           this.showModal = false;
@@ -219,7 +219,7 @@ export default {
             code: '',
             percent: 100,
             enabled: false,
-            deadline_at: '2020-10-16 09:31:18',
+            deadline_at: '2020-10-18 23:59:59',
           };
         })
         .catch((err) => {
@@ -229,14 +229,14 @@ export default {
     },
     updateCoupon(id) {
       this.isLoading = true;
+      this.tempCoupon.deadline_at = `${this.due_date} ${this.due_time}`;
       this.axios
         .patch(
           `${process.env.VUE_APP_ApiPath}/api/${process.env.VUE_APP_UUID}/admin/ec/coupon/${id}`,
           this.tempCoupon,
         )
-        .then((res) => {
+        .then(() => {
           this.isLoading = false;
-          this.tempCoupon = res.data.data;
           this.getCoupons();
           this.showModal = false;
         })

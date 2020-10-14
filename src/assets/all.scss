@@ -1,27 +1,32 @@
 @import 'scss/variables';
 @import 'scss/default';
 @import 'scss/mixin';
-@import 'scss/login';
-@import 'scss/navbar';
-@import 'scss/gotop';
-@import 'scss/footer';
-@import 'scss/toast';
-@import 'scss/home';
-@import 'scss/index';
-@import 'scss/about';
-@import 'scss/account';
-@import 'scss/coupons';
-@import 'scss/sidecart';
-@import 'scss/breadcrumb';
-@import 'scss/products';
-@import 'scss/product';
-@import 'scss/wishlist';
-@import 'scss/reserve';
-@import 'scss/ordercheck';
-@import 'scss/orderinfo';
-@import 'scss/ordersuccess';
-@import 'scss/history';
 @import 'scss/pagination';
+
+@import 'scss/fronted/components/navbar';
+@import 'scss/fronted/components/footer';
+@import 'scss/fronted/components/gotop';
+@import 'scss/fronted/components/toast';
+@import 'scss/fronted/components/sidecart';
+@import 'scss/fronted/components/breadcrumb';
+@import 'scss/fronted/components/accountbread';
+
+@import 'scss/fronted/layout/login';
+@import 'scss/fronted/layout/home';
+@import 'scss/fronted/layout/index';
+@import 'scss/fronted/layout/about';
+@import 'scss/fronted/layout/account';
+@import 'scss/fronted/layout/products';
+@import 'scss/fronted/layout/product';
+@import 'scss/fronted/layout/reserve';
+
+@import 'scss/fronted/page/coupons';
+@import 'scss/fronted/page/wishlist';
+@import 'scss/fronted/page/ordercheck';
+@import 'scss/fronted/page/orderinfo';
+@import 'scss/fronted/page/ordersuccess';
+@import 'scss/fronted/page/history';
+
 @import 'scss/backend/navbar';
 @import 'scss/backend/products';
 @import 'scss/backend//storage';

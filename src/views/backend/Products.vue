@@ -91,7 +91,6 @@ export default {
       pagination: {},
     };
   },
-  props: [' token'],
   methods: {
     getProducts(num = 1) {
       this.isLoading = true;

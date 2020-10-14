@@ -7,8 +7,8 @@
     </div>
 </template>
 <script>
-import Navbar from '@/components/Navbar.vue';
-import Footer from '@/components/Footer.vue';
+import Navbar from '@/components/fronted/Navbar.vue';
+import Footer from '@/components/fronted/Footer.vue';
 import Gotop from '@/components/Gotop.vue';
 // import Toast from '@/components/Toast.vue';
 
