@@ -8,6 +8,10 @@
     line-height: 1.5;
     padding: 10px;
 
+    @include phone-width{
+        top: 90px;
+    }
+
     &_now{
         color: $brown;
         text-transform:capitalize;

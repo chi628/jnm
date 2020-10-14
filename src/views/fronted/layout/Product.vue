@@ -24,7 +24,7 @@
           <div>
             <button
               type="button"
-              :disabled="product.quantity === 1"
+              :disabled="quantity === 1"
               @click="quantity = quantity - 1"
             >
               -

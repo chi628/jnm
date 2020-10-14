@@ -786,14 +786,6 @@
         }
 
         @include phone-width {
-            // position: fixed;
-            // width: 100vw;
-            // height: 70px;
-            // background-color: $darker-merino;
-            // top: 765px;
-            // left: 0;
-            // right: 0;
-            // padding: 5px;
             display: none;
 
             &.scroll {
@@ -832,6 +824,8 @@
     bottom: 0;
     background-color: $darker-merino;
 
+    &-cart {}
+
     ul {
         display: flex;
         justify-content: center;
@@ -839,6 +833,8 @@
 
         li {
             margin: 5px 20px;
+            width: 25px;
+            height: 25px;
 
             a {
                 text-decoration: none;
@@ -849,8 +845,31 @@
             button {
                 border: none;
                 background-color: $darker-merino;
-                font-size: 18px;
+                font-size: 20px;
+                position: relative;
                 color: $main-color;
+                width: 25px;
+                height: 25px;
+
+                i {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                }
+
+                span {
+                    display: inline-block;
+                    padding: 0.6em;
+                    font-family: $font;
+                    font-size: 8px;
+                    line-height: .5;
+                    text-align: center;
+                    background-color: #CDB89B;
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    transform: translateX(8px) translateY(1px);
+                }
 
                 &:hover {
                     cursor: pointer;

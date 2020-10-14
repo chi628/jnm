@@ -195,7 +195,7 @@
             <i class="fas fa-tags"></i>
           </router-link>
         </li>
-        <li class="header-icon-cart">
+        <li class="mobile-icon-cart">
           <button type="button" @click="isCartshow = true">
             <i class="fas fa-shopping-cart"></i>
             <span>{{ cart.length }}</span>
