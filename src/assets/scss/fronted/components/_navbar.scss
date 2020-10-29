@@ -1,176 +1,96 @@
+*,
+*::before,
+*:after {
+    box-sizing: border-box;
+    text-decoration: none;
+    color: $main-color;
+}
+
+body {
+    font-family: $font;
+    line-height: 1.5;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
 .header {
-    width: 100vw;
-    height: 120px;
+    width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0 10px;
     position: sticky;
     top: 0;
-    z-index: 99;
+    z-index: 1999;
     background-color: $white;
 
-
     &.scroll {
-        height: 70px;
         position: sticky;
-        top: 0;
         z-index: 99;
+        transition: .3s linear;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 0;
         background-color: $white;
-        box-shadow: 0px 0px 2px $box-shadow;
-        transition: .3s linear
-    }
-
-    @include pc-width {
-        height: 100px;
+        box-shadow: 0 0 1px $box-shadow;
     }
 
     @include pad-width {
-        height: 80px;
-        box-shadow: 0px 0px 2px $box-shadow;
-    }
+        width: 100vw;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 25px;
+        box-shadow: 0 0 1px $box-shadow;
 
-    @include small-pad-width {
-        height: 80px;
-        box-shadow: 0px 0px 2px $box-shadow;
+        &.scroll {
+            padding: 8px 25px;
+            justify-content: space-between;
+            align-items: center;
+        }
     }
 
     @include phone-width {
-        height: 100px;
-        box-shadow: 0px 0px 2px $box-shadow;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: 0;
+        background-color: $white;
+        box-shadow: 0 0 1px $box-shadow;
 
         &.scroll {
-            height: 90px;
-
-            .header-mobile_serach {
-                padding: 5px;
-
-                label {
-                    top: 12px;
-                    left: 30px;
-                }
-
-            }
-
-            .header-menu-mobile {
-                top: 0;
-                transition: .3s linear;
-            }
-
-            .mask {
-                &.show {
-                    transition: .3s linear;
-                    top: 90px;
-                    display: block;
-                }
-            }
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            width: 100vw;
+            padding: 0;
+            box-shadow: 0 0 1px $box-shadow;
         }
     }
 
-
-    &-mobile_serach {
-        display: none;
-
-        @include phone-width {
-            display: block;
-            position: relative;
-            padding: 10px;
-            margin: 0 auto;
-            background-color: $white;
-            text-align: center;
-            transition: .3s linear;
-
-            label {
-                position: absolute;
-                z-index: 1;
-                text-indent: -9999px;
-                cursor: pointer;
-                top: 15px;
-                left: 35px;
-                content: '';
-                display: inline-block;
-                transition: .3s linear;
-                width: 18px;
-                height: 18px;
-                background: url(https://img.icons8.com/android/24/000000/search.png) no-repeat;
-            }
-
-            input {
-                width: 90%;
-                height: 30px;
-                transition: width 0.35s;
-                font-size: 14px;
-                line-height: 1.5;
-                padding-left: 30px;
-                border-radius: 5px;
-                border: 1px solid $main-color;
-
-                &:active,
-                &:focus {
-                    outline: none;
-                }
-            }
-        }
-    }
-
-    .ham-btn {
-        cursor: pointer;
-        display: none;
-        position: absolute;
-        top: 40px;
-        left: 40px;
-        z-index: 1999;
-
-        span {
-            display: block;
-            margin: 5px 0;
-            width: 22px;
-            height: 2px;
-            background: $main-color;
-        }
-
-        @include pc-width {
+    &-mobile {
+        .ham {
             display: none;
-        }
+            transition: 0.3s ease-in-out;
+            margin-left: 15px;
 
-
-        @include pad-width {
-            display: block;
-            top: 30px;
-            left: 40px;
-
-            &.scroll {
-                top: 20px;
-                left: 40px;
-                transition: .3s linear
-            }
-        }
-
-        @include small-pad-width {
-            display: block;
-            top: 25px;
-            left: 30px;
-
-            &.scroll {
-                top: 20px;
-                left: 30px;
-                transition: .3s linear
-            }
-        }
-
-        @include phone-width {
-            display: block;
-            top: 18px;
-            left: 20px;
-
-            &.scroll {
-                top: 12px;
-                transition: .3s linear
+            span {
+                display: block;
+                margin-bottom: 5px;
+                width: 22px;
+                height: 2px;
+                background: $main-color;
             }
 
-            &.close {
+            &.show {
                 span {
-                    top: 8px;
-                    position: absolute;
+                    position: relative;
                     transition: 0.3s ease-in-out;
 
                     &:nth-child(1) {
+                        top: 5px;
                         transform: rotate(-135deg);
                     }
 
@@ -179,621 +99,391 @@
                     }
 
                     &:nth-child(3) {
+                        top: -2px;
                         transform: rotate(135deg);
                     }
                 }
             }
         }
-    }
-
-
-    &-logo {
-        text-align: center;
-        padding-top: 30px;
-        width: 200px;
-        margin: 0 auto;
-
-        a {
-            text-decoration: none;
-            color: $main-color;
-            font-size: $logo-fz;
-            font-family: $logo-font;
-        }
-
-        &.scroll {
-            margin-left: 40px;
-            padding-top: 20px;
-            transition: .3s linear;
-        }
-
-        @include pc-width {
-            margin-left: 10px;
-            padding-top: 35px;
-
-            &.scroll {
-                padding-top: 20px;
-                margin-left: 10px;
-                transition: .3s linear;
-            }
-        }
-
-        @include pad-width {
-            margin: 0 auto;
-            padding-top: 25px;
-
-            &.scroll {
-                margin: 0 auto;
-            }
-        }
-
-        @include small-pad-width {
-            margin: 0 auto;
-            padding-top: 25px;
-
-            &.scroll {
-                margin: 0 auto;
-            }
-        }
 
         @include phone-width {
-            margin: 0 auto;
-            padding-top: 20px;
+            width: 100vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            z-index: 99;
+            background-color: $white;
 
-            a {
-                font-size: 26px;
-            }
-
-            &.scroll {
-                margin: 0 auto;
-                padding-top: 15px;
-                font-size: 24px;
+            .ham {
+                display: block;
             }
         }
     }
+}
 
-    &-menu {
-        height: 50px;
-        width: 800px;
-        margin: 5px auto;
 
-        &.scroll {
-            margin: -50px auto;
-            transition: .3s linear
+h1 {
+    text-align: center;
+    font-family: $logo-font;
+    font-size: $logo-fz;
+    line-height: 1;
+
+    @include phone-width {
+        font-size: 28px;
+        line-height: 1.5;
+    }
+}
+
+.nav {
+    display: flex;
+    justify-content: flex-end;
+
+    @include pad-width {
+        flex-direction: column;
+        justify-content: center;
+        // border: 1px solid red;
+    }
+}
+
+
+.menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px 50px 5px 0;
+
+    li {
+        margin-left: 24px;
+        margin-right: 24px;
+        text-align: center;
+        height: 30px;
+        overflow: hidden;
+
+        span {
+            transition: 0.2s cubic-bezier(1, 0.8, 0.8, 1);
+            display: flex;
+            flex-direction: column;
+            padding-top: 5px;
         }
 
-        ul {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+
+        & a:hover {
+            span:nth-child(1) {
+                transform: scaleY(0) translateY(-30px);
+            }
+
+            span:nth-child(2) {
+                transform: translateY(-33px);
+            }
+        }
+
+        &:nth-child(3) {
+            position: relative;
+
+            ul {
+                position: absolute;
+                top: 40px;
+                left: -70px;
+                display: flex;
+                flex-direction: column;
+                border: 1px solid $main-color;
+                background-color: $darker-merino;
+                box-shadow: 1px 1px 2px $box-shadow;
+
+                &::before {
+                    //偽元素製作三角形
+                    display: block;
+                    content: "";
+                    height: 15px;
+                    width: 15px;
+                    background-color: $darker-merino;
+                    border-bottom: 1px solid $second-color;
+                    border-right: 1px solid $second-color;
+                    position: absolute;
+                    top: -8px;
+                    left: 90px;
+                    transform: rotate(-135deg);
+                }
+
+                li {
+                    // border: 1px solid red;
+                    width: 150px;
+                    margin: 5px 24px;
+                    position: relative;
+                    border-bottom: 1px solid $main-color;
+                }
+            }
+
+            &:hover {
+                overflow: visible;
+
+                &>a>span {
+                    &:nth-child(1) {
+                        transform: scaleY(0) translateY(-30px);
+                    }
+
+                    &:nth-child(2) {
+                        transform: translateY(-30px);
+                    }
+                }
+            }
+
+        }
+
+    }
+
+    &-mobile {
+        display: none;
+        transition: 0.5s ease-in-out;
+
+        @include phone-width {
+            background-color: $merino;
+            width: 310px;
+            height: 100vh;
+            z-index: 99;
+            overflow-y: scroll;
+            position: absolute;
+            top: 51px;
+            left: -350px;
+            display: block;
+            text-align: center;
+            box-shadow: 1px 1px 2px $box-shadow;
 
             li {
-                padding: 0 10px;
-                position: relative;
+                text-align: center;
+                box-shadow: 0px 0px 1px $box-shadow;
+                width: 100%;
+                padding: 10px;
 
-                &:hover {
+                span {
+                    display: flex;
+                    padding-top: 5px;
 
-                    ul {
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
+                    &:nth-child(2) {
+                        display: none;
+                    }
+
+                }
+
+                & a:hover {
+                    span:nth-child(1) {
+                        display: none;
+                    }
+
+                    span:nth-child(2) {
+                        // transform: translateY(-25px);
+                        display: block;
                     }
                 }
 
-                a {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    height: 30px;
-                    padding: 10px;
-                    overflow: hidden;
-                    text-decoration: none;
-                    color: $main-color;
-                    font-size: 14px;
-                    font-weight: 400;
-                    font-family: $font;
-                    text-transform: uppercase;
-
-                    span {
-                        transition: 0.2s cubic-bezier(1, 0.8, 0.8, 1);
-                        position: relative;
-                        padding: 10px;
+                &:nth-child(3) {
+                    ul {
+                        display: none;
                     }
 
                     &:hover {
-                        span:nth-child(1) {
-                            transform: scaleY(0) translateY(-33px);
+                        ul {
+                            position: relative;
+                            display: block;
+                            margin-top: 5px;
+                            background-color: $darker-merino;
+                            box-shadow: 0 0 1px $box-shadow;
                         }
 
-                        span:nth-child(2) {
-                            transform: translateY(-33px);
-                        }
-                    }
-                }
-
-                ul {
-                    position: absolute;
-                    left: -40px;
-                    top: 50px;
-                    width: 200px;
-                    display: none;
-                    flex-direction: column;
-                    border: 1px solid $main-color;
-                    background-color: $darker-merino;
-                    box-shadow: 1px 1px 2px $box-shadow;
-
-                    &::before {
-                        //偽元素製作三角形
-                        display: block;
-                        content: "";
-                        height: 15px;
-                        width: 15px;
-                        background-color: $darker-merino;
-                        border-bottom: 1px solid $second-color;
-                        border-right: 1px solid $second-color;
-                        position: absolute;
-                        top: -9px;
-                        left: 90px;
-                        transform: rotate(-135deg);
-                    }
-
-                    li {
-                        a {
-                            width: 200px;
-                            height: 40px;
-                            font-family: $font;
-                            text-align: center;
-                            font-size: 14px;
-                            line-height: 21px;
-                            letter-spacing: 1px;
-                            text-transform: uppercase;
-
-                            span {
-                                // transition: 0.1s cubic-bezier(1, 0.8, 0.8, 1);
-                                position: relative;
-                                padding: 10px;
+                        &>a>span {
+                            &:nth-child(1) {
+                                display: none;
                             }
 
-                            &:hover {
-                                span:nth-child(1) {
-                                    transform: scaleY(0) translateY(-33px);
-                                }
-
-                                span:nth-child(2) {
-                                    transform: translateY(-33px);
-                                }
+                            &:nth-child(2) {
+                                display: block;
                             }
                         }
                     }
-
-                    li+li::before {
-                        content: "";
-                        position: absolute;
-                        border-bottom: 1px solid $main-color;
-                        box-shadow: 1px 1px 2px $box-shadow;
-                        width: 150px;
-                        left: 45px;
-                    }
-                }
-            }
-        }
-
-        @include pc-width {
-            margin: -50px auto;
-
-            ul {
-                li {
-                    padding: 0 5px;
-                }
-            }
-
-            &.scroll {
-                margin: -50px auto;
-            }
-
-        }
-
-        @include pad-width {
-            width: 100vw;
-            margin-top: 10px;
-            opacity: 0;
-            z-index: 99;
-            transition: .3s ease-in-out;
-
-            ul {
-                display: block;
-                border-top: 1px solid $main-color;
-                box-shadow: 1px 1px 2px $box-shadow;
-                background-color: $white;
-
-                li {
-                    box-shadow: 0px 0px 1px $box-shadow;
                 }
             }
 
             &.show {
-                opacity: 1;
+                left: 0;
             }
+        }
+    }
 
-            &.scroll {
-                margin-top: 10px;
-                width: 100vw;
+    @include pad-width {
+        margin-right: 10px;
+
+        li {
+            margin: 0 16px;
+        }
+    }
+
+    @include phone-width {
+        display: none;
+    }
+}
+
+.icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    li {
+        margin: 0 8px;
+
+        input {
+            border: 1px solid $main-color;
+            border-radius: 5px;
+            padding: 5px;
+
+            &:focus,
+            &:active {
+                outline: none;
             }
         }
 
-        @include small-pad-width {
-            width: 100vw;
-            margin-top: 10px;
-            opacity: 0;
-            z-index: 99;
-            transition: .3s ease-in-out;
+        button {
+            font-size: 18px;
+        }
+
+        &:nth-child(2) {
+            position: relative;
 
             ul {
-                display: block;
-                border-top: 1px solid $main-color;
+                position: absolute;
+                display: none;
+                flex-direction: column;
+                border: 1px solid $main-color;
+                background-color: $darker-merino;
                 box-shadow: 1px 1px 2px $box-shadow;
-                background-color: $white;
+                top: 35px;
+                left: -65px;
 
                 li {
-                    box-shadow: 0px 0px 1px $box-shadow;
-                }
-            }
+                    text-align: center;
+                    width: 140px;
+                    height: 30px;
+                    overflow: hidden;
+                    margin: 5px 10px;
+                    border-bottom: 1px solid $main-color;
 
-            &.show {
-                opacity: 1;
-            }
+                    a {
+                        display: flex;
+                        justify-content: center;
+                    }
 
-            &.scroll {
-                margin-top: 10px;
-                width: 100vw;
-            }
-        }
-
-        @include phone-width {
-            display: none;
-        }
-
-
-        &-mobile {
-            display: none;
-
-            @include phone-width {
-                position: relative;
-                width: 90vw;
-                height: 100vh;
-                margin-top: 10px;
-                display: block;
-                top: -5px;
-                left: -380px;
-                z-index: 99;
-                transition: .5s;
-                background-color: $white;
-
-                ul {
-                    display: block;
-                    // border-top: 1px solid $main-color;
-                    box-shadow: 1px 1px 2px $box-shadow;
-                    background-color: $white;
-
-                    li {
-                        position: relative;
-                        box-shadow: 0px 0px 1px $box-shadow;
-
-                        a {
-                            display: flex;
-                            flex-direction: column;
-                            align-items: center;
-                            height: 30px;
-                            padding: 10px;
-                            overflow: hidden;
-                            text-decoration: none;
-                            color: $main-color;
-                            font-size: 14px;
-                            font-weight: 400;
-                            font-family: $font;
-                            text-transform: uppercase;
-                        }
+                    .subtitle {
+                        width: 250px;
+                        display: flex;
+                        flex-direction: column;
 
                         span {
-                            // transition: 0.1s cubic-bezier(1, 0.8, 0.8, 1);
-                            position: relative;
-                            padding: 10px;
+                            transition: 0.2s cubic-bezier(1, 0.8, 0.8, 1);
+                            padding-top: 3px;
                         }
 
                         &:hover {
-                            span:nth-child(1) {
-                                transform: scaleY(0) translateY(-33px);
-                            }
-
-                            span:nth-child(2) {
-                                transform: translateY(-33px);
-                            }
-                        }
-
-
-
-                        &:nth-child(3) {
-                            &::after {
-                                content: '';
-                                width: 0;
-                                height: 0;
-                                border-style: solid;
-                                border-width: 6px 6px 0;
-                                border-color: $brown transparent transparent transparent;
-                                position: absolute;
-                                right: 15px;
-                                top: 20px;
-                            }
-                        }
-
-                        ul {
-                            display: none;
-                            transform: scaleY(0);
-                            transition: .3s ease;
-
-                            li {
-                                background-color: $merino;
-
-                                &:hover {
-                                    span:nth-child(1) {
-                                        transform: scaleY(0) translateY(-33px);
-                                    }
-
-                                    span:nth-child(2) {
-                                        transform: translateY(-33px);
-                                    }
-                                }
-
-                                &:nth-child(3) {
-                                    &::after {
-                                        content: '';
-                                        width: 0;
-                                        height: 0;
-                                        border-style: none;
-                                    }
-                                }
-                            }
-
-                            &.show {
-                                display: block;
-                                transform: scaleY(1);
-                            }
-                        }
-                    }
-                }
-
-                &.show {
-                    left: 0;
-                }
-
-                &.scroll {
-                    margin-top: 10px;
-                    width: 100vw;
-                }
-            }
-        }
-    }
-
-    &-icon {
-        position: absolute;
-        top: 85px;
-        right: 30px;
-        width: 350px;
-
-        &.scroll {
-            position: absolute;
-            top: 25px;
-            right: 25px;
-            transition: .3s linear
-        }
-
-        &-cart {
-            span {
-                display: inline-block;
-                padding: 0.6em;
-                font-family: $font;
-                font-size: 8px;
-                line-height: .5;
-                text-align: center;
-                background-color: #CDB89B;
-                width: 10px;
-                height: 10px;
-                border-radius: 50%;
-                transform: translateX(-5px) translateY(1px);
-            }
-        }
-
-
-        ul {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-
-            li {
-                margin: 0 10px;
-
-                &:hover {
-
-                    ul {
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                    }
-                }
-
-                a {
-                    text-decoration: none;
-                    font-size: 20px;
-                    color: $main-color;
-                }
-
-                button {
-                    border: none;
-                    background-color: $white;
-                    font-size: 18px;
-                    color: $main-color;
-
-                    &:hover {
-                        cursor: pointer;
-                    }
-
-                    &:active,
-                    &:focus {
-                        outline: none;
-                    }
-                }
-
-                input {
-                    // visibility: hidden;
-                    position: absolute;
-                    left: 20px;
-                    top: -5px;
-                    width: 180px;
-                    height: 35px;
-                    padding: 5px;
-                    margin-bottom: 5px;
-                    border: 2px solid $main-color;
-                    border-radius: 5px;
-
-                    &:active,
-                    &:focus {
-                        outline: none;
-                    }
-                }
-
-                ul {
-                    position: absolute;
-                    left: 160px;
-                    top: 35px;
-                    width: 200px;
-                    display: none;
-                    flex-direction: column;
-                    border: 1px solid $main-color;
-                    background-color: $darker-merino;
-                    box-shadow: 1px 1px 2px $box-shadow;
-
-                    &::before {
-                        //偽元素製作三角形
-                        display: block;
-                        content: "";
-                        height: 15px;
-                        width: 15px;
-                        background-color: $darker-merino;
-                        border-bottom: 1px solid $second-color;
-                        border-right: 1px solid $second-color;
-                        position: absolute;
-                        top: -9px;
-                        left: 90px;
-                        transform: rotate(-135deg);
-                    }
-
-                    li {
-                        height: 50px;
-                        color: $main-color;
-
-                        i {
-                            position: relative;
-                            top: 10px;
-                            left: -70px;
-                        }
-
-                        a {
-                            display: flex;
-                            flex-direction: column;
-                            align-items: center;
-                            width: 150px;
-                            height: 20px;
-                            padding: 10px;
-                            overflow: hidden;
-                            text-decoration: none;
-
                             span {
-                                transition: 0.2s cubic-bezier(1, 0.8, 0.8, 1);
-                                position: relative;
-                                top: -10px;
-                                font-size: 16px;
-                                line-height: 1.6;
-                                font-weight: 400;
-                                font-family: $font;
-                                text-transform: uppercase;
-                            }
-
-                            &:hover {
-                                span:nth-child(2) {
-                                    transform: scaleY(0) translateY(-33px);
+                                &:nth-child(1) {
+                                    transform: scaleY(0) translateY(-30px);
                                 }
 
-                                span:nth-child(3) {
+                                &:nth-child(2) {
                                     transform: translateY(-30px);
                                 }
                             }
                         }
                     }
-
-                    li+li::before {
-                        content: "";
-                        position: absolute;
-                        border-bottom: 1px solid $main-color;
-                        box-shadow: 1px 1px 2px $box-shadow;
-                        width: 170px;
-                        left: 10px;
-                    }
                 }
-            }
-        }
 
-        @include pc-width {
-            position: absolute;
-            top: 40px;
-            right: 30px;
-
-            &.scroll {
-                top: 30px;
-                right: 30px;
-            }
-        }
-
-        @include pad-width {
-            top: 30px;
-            right: 20px;
-
-            &.scroll {
-                top: 25px;
-            }
-        }
-
-        @include small-pad-width {
-            top: 35px;
-            right: 15px;
-
-            ul {
-                li {
-                    margin: 0 8px;
-
-                    a {
-                        font-size: 16px;
-                    }
-
-                    button {
-                        font-size: 16px;
-                    }
+                &::before {
+                    //偽元素製作三角形
+                    display: block;
+                    content: "";
+                    height: 15px;
+                    width: 15px;
+                    background-color: $darker-merino;
+                    border-bottom: 1px solid $second-color;
+                    border-right: 1px solid $second-color;
+                    position: absolute;
+                    top: -8px;
+                    left: 70px;
+                    transform: rotate(-135deg);
                 }
             }
 
-            &.scroll {
-                top: 25px;
-                right: 15px;
+            &:hover {
+                ul{
+                    display: flex;
+                }
             }
         }
+    }
+
+    .cart-amount {
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        background-color: $darker-merino;
+        border-radius: 50%;
+        font-size: 8px;
+        line-height: 1;
+        text-align: center;
+        transform: translateX(-5px) translateY(1px);
+    }
+
+    &-mobile {
+        display: none;
 
         @include phone-width {
-            display: none;
+            display: flex;
+            justify-content: space-around;
+            position: fixed;
+            width: 100vw;
+            bottom: 0;
+            padding: 5px 0;
+            background-color: $darker-merino;
 
-            &.scroll {
-                position: fixed;
-                top: 765px;
+            button {
+                background-color: $darker-merino;
+            }
+
+            .cart-amount {
+                display: inline-block;
+                width: 15px;
+                height: 15px;
+                background-color: $brown;
+                color: $white;
+                border-radius: 50%;
+                font-size: 8px;
+                line-height: 1;
+                text-align: center;
+                transform: translateX(-5px) translateY(1px);
+            }
+
+            li {
+                // border: 1px solid red;
+                width: 50px;
+                text-align: center;
             }
         }
+    }
 
+    @include pad-width {
+        justify-content: flex-end;
+        margin-right: 0px;
+
+        li {
+            margin: 0 4px;
+
+            button {
+                font-size: 16px;
+            }
+        }
+    }
+
+    @include phone-width {
+        display: none;
     }
 }
 
@@ -806,87 +496,7 @@
     left: 0;
     right: 0;
 
-    &.open {
-        display: block;
-    }
-
     &.show {
-        top: 100px;
         display: block;
-    }
-}
-
-
-.mobile-icon {
-    display: none;
-    width: 100vw;
-    position: fixed;
-    bottom: 0;
-    background-color: $darker-merino;
-
-    &-cart {}
-
-    ul {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        li {
-            margin: 5px 20px;
-            width: 25px;
-            height: 25px;
-
-            a {
-                text-decoration: none;
-                font-size: 20px;
-                color: $main-color;
-            }
-
-            button {
-                border: none;
-                background-color: $darker-merino;
-                font-size: 20px;
-                position: relative;
-                color: $main-color;
-                width: 25px;
-                height: 25px;
-
-                i {
-                    position: absolute;
-                    left: 0;
-                    top: 0;
-                }
-
-                span {
-                    display: inline-block;
-                    padding: 0.6em;
-                    font-family: $font;
-                    font-size: 8px;
-                    line-height: .5;
-                    text-align: center;
-                    background-color: #CDB89B;
-                    width: 10px;
-                    height: 10px;
-                    border-radius: 50%;
-                    transform: translateX(8px) translateY(1px);
-                }
-
-                &:hover {
-                    cursor: pointer;
-                }
-
-                &:active,
-                &:focus {
-                    outline: none;
-                }
-            }
-        }
-    }
-
-    @include phone-width {
-        display: block;
-        left: 0;
-        right: 0;
-        padding: 5px;
     }
 }
